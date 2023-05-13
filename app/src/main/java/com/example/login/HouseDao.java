@@ -31,4 +31,12 @@ public interface HouseDao {
     @Query("SELECT * FROM house_table WHERE (latitude LIKE (:lat) AND longitude LIKE (:lon))")
     List<House> findbycoordinate(float lat, float lon);
 
+    @Query("SELECT * FROM house_table ORDER BY price|(:seq)") // seq equals to ASC or DESC
+    List<House> sortHousePrice(String seq);
+
+    @Query("SELECT * FROM house_table ORDER BY rating|(:seq)") // seq equals to ASC or DESC
+    List<House> sortHouseRating(String seq);
+
+    @Query("SELECT houseimagepath FROM house_table where house_id = :houseid")
+    String getImageByHouseId(int houseid);
 }

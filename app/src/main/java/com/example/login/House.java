@@ -6,6 +6,7 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -84,6 +85,9 @@ public class House {
     @ColumnInfo(name = "visibility")
     @NonNull
     public boolean visibility;
+
+    @ColumnInfo(name = "houseimagepath")
+    public String houseimagepath;
 
     public House() {
     }

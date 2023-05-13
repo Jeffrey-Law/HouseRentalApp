@@ -7,4 +7,19 @@
     <string name="home_tv_district_Location_str">Location</string>
     <string name="home_searchwithmap_str"><font size="12">Search With Google Map</font></string>
     <string name="home_search_str"><font size="12">Search</font></string>
+    <string name="posting_uploadphoto_str"><font size="12">Upload Photo</font></string>
+    <string name="posting_price_tv_str">Price:</string>
+    <string name="posting_price_et_str">Price ($HKD)</string>
+    <string name="posting_address_tv_str">Address:</string>
+    <string name="posting_address_et_str">Address</string>
+    <string name="posting_bedroom_tv_str">Number of Bedroom:</string>
+    <string name="posting_bedroom_et_str">Number of Bedroom</string>
+    <string name="posting_carspace_tv_str">Number of Car Space:</string>
+    <string name="posting_carspace_et_str">Number of Car Space</string>
+    <string name="posting_furnished_tv_str">Furnished?</string>
+    <string name="posting_pet_tv_str">Pet Considered?</string>
+    <string name="posting_housetype_tv_str">House Type:</string>
+    <string name="posting_desc_tv_str">Description:</string>
+    <string name="posting_desc_et_str">Description (50 Words Limit)</string>
+    <string name="posting_visibility_tv_str">Visible to Public?</string>
 </resources>
