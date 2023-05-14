@@ -26,8 +26,8 @@ AdapterView.OnItemSelectedListener{
     Spinner furnished, petConsidered, visibility, houseType, publishingTime;
 
     TextView price, address, numOfBedroom, numOfCarSpace, description;
-    Button upLoadPhotoBtn = findViewById(R.id.uploadPhoto_btn);
-    Button postingBtn = findViewById(R.id.posting_btn);
+    Button upLoadPhotoBtn;
+    Button postingBtn;
 
     AppDatabase appDatabase;
 
@@ -36,7 +36,8 @@ AdapterView.OnItemSelectedListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_posting);
 
-        appDatabase = MainActivity.getAppDatabase();
+        postingBtn = findViewById(R.id.uploadPhoto_btn);
+        upLoadPhotoBtn= findViewById(R.id.posting_btn);
 
         price = findViewById(R.id.price_tv);
         address = findViewById(R.id.address_tv);
