@@ -48,7 +48,7 @@ AdapterView.OnItemSelectedListener{
     String[] publishTime = {"7 Days", "30 Days", "90 Days", "180 Days", "365 Days"};
     Spinner district, furnished, petConsidered, visibility, houseType, publishingTime;
 
-    TextView price, address, numOfBedroom, numOfCarSpace, description;
+    TextView title, price, address, numOfBedroom, numOfCarSpace, description;
     Button upLoadPhotoBtn;
     Button postingBtn;
 
@@ -58,7 +58,7 @@ AdapterView.OnItemSelectedListener{
     UserDao userDao;
     HouseDao houseDao;
 
-    byte[] imageData;
+    byte[] imageData = null;
     ByteArrayOutputStream stream;
     Bitmap bitmap = null;
 
@@ -76,6 +76,7 @@ AdapterView.OnItemSelectedListener{
 
         houseImage = findViewById(R.id.houseImage_iv);
 
+        title = findViewById(R.id.title_et);
         price = findViewById(R.id.price_et);
         address = findViewById(R.id.address_et);
         numOfBedroom = findViewById(R.id.bedroom_et);
@@ -169,6 +170,7 @@ AdapterView.OnItemSelectedListener{
     private View.OnClickListener posting = new View.OnClickListener(){
         @Override
         public void onClick(View v){
+            String title_txt = title.getText().toString();
             String price_txt = price.getText().toString();
             String address_txt = address.getText().toString();
             String district_txt = district.getSelectedItem().toString();
@@ -179,7 +181,7 @@ AdapterView.OnItemSelectedListener{
             String houseType_sel = houseType.getSelectedItem().toString();
             String visibility_sel = visibility.getSelectedItem().toString();
             String description_txt = description.getText().toString();
-          if(price_txt.length()==0 || address_txt.length()==0 || numOfBedroom_txt.length()==0 ||
+          if(title_txt.length()== 0 || price_txt.length()==0 || address_txt.length()==0 || numOfBedroom_txt.length()==0 ||
             numOfCarSpace_txt.length()==0 || furnished_sel.length() > 4 || petConsidered_sel.length() > 4 || visibility_sel.length() > 4){
                             Toast.makeText(PostingActivity.this,"Please fill in all the necessary information", Toast.LENGTH_SHORT).show();
             }else{
@@ -197,7 +199,15 @@ AdapterView.OnItemSelectedListener{
                   e.printStackTrace();
               }
                 Toast.makeText(PostingActivity.this,"Posted", Toast.LENGTH_SHORT).show();
-                House house = new House(123,Integer.parseInt(price_txt),address_txt,district_txt,latitude,longitude,
+
+                if(imageData == null){
+                    bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.default_house_image);
+                    stream = new ByteArrayOutputStream();
+                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                    imageData = stream.toByteArray();
+                }
+
+                House house = new House(123, title_txt, Integer.parseInt(price_txt),address_txt,district_txt,latitude,longitude,
                         Integer.parseInt(numOfBedroom_txt), Integer.parseInt(numOfCarSpace_txt),
                         convertOptionToBoolean(furnished_sel),convertOptionToBoolean(petConsidered_sel),
                         houseType_sel, description_txt,  convertOptionToBoolean(visibility_sel), convertPublishTime(publishingTime.getSelectedItemPosition()),imageData);

@@ -26,4 +26,6 @@
     <string name="posting_posting_tv_str"><font size="12">Posting</font></string>
     <string name="posting_district_tv_str">District</string>
     <string name="signup_upload_tv_str">Upload image</string>
+    <string name="posting_title_tv_str">Title</string>
+    <string name="detail_description_tv" />
 </resources>
