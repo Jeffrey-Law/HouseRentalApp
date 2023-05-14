@@ -12,61 +12,90 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/result1"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="160dp"
-            android:importantForAccessibility="no"
-            android:scaleType="centerCrop"
-            android:src="@drawable/house2" />
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/result_title1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:textAppearance="?attr/textAppearanceHeadline6"
-            android:text="house1"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
 
-        <ImageView
-            android:id="@+id/result2"
-            android:layout_width="match_parent"
-            android:layout_height="160dp"
-            android:importantForAccessibility="no"
-            android:scaleType="centerCrop"
-            android:src="@drawable/house6" />
+                <ImageView
+                    android:id="@+id/result1"
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    android:importantForAccessibility="no"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/house2" />
 
-        <TextView
-            android:id="@+id/result_title2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:textAppearance="?attr/textAppearanceHeadline6"
-            android:text="house2"/>
+                <TextView
+                    android:id="@+id/result_title1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:text="house1"
+                    android:textAppearance="?attr/textAppearanceHeadline6" />
 
-        <ImageView
-            android:id="@+id/result3"
-            android:layout_width="match_parent"
-            android:layout_height="160dp"
-            android:importantForAccessibility="no"
-            android:scaleType="centerCrop"
-            android:src="@drawable/house8" />
+                <ImageView
+                    android:id="@+id/result2"
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    android:importantForAccessibility="no"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/house6" />
 
-        <TextView
-            android:id="@+id/result_title3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:textAppearance="?attr/textAppearanceHeadline6"
-            android:text="house2"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="back"
-            android:layout_gravity="center_horizontal"
-            android:textSize="18dp"
-            android:layout_marginTop="15dp"
-            android:id="@+id/backbtn"/>
+                <TextView
+                    android:id="@+id/result_title2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:text="house2"
+                    android:textAppearance="?attr/textAppearanceHeadline6" />
+
+                <ImageView
+                    android:id="@+id/result3"
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    android:importantForAccessibility="no"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/house8" />
+
+                <TextView
+                    android:id="@+id/result_title3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:text="house2"
+                    android:textAppearance="?attr/textAppearanceHeadline6" />
+
+                <ImageView
+                    android:id="@+id/result3"
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    android:importantForAccessibility="no"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/house8" />
+
+                <TextView
+                    android:id="@+id/result_title3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:text="house2"
+                    android:textAppearance="?attr/textAppearanceHeadline6" />
+
+                <Button
+                    android:id="@+id/backbtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="15dp"
+                    android:text="back"
+                    android:textSize="18dp" />
+            </LinearLayout>
+        </ScrollView>
+
     </LinearLayout>
 
 
