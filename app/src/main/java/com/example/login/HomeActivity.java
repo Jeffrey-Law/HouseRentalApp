@@ -3,18 +3,18 @@ package com.example.login;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.widget.NestedScrollView;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -29,7 +29,8 @@ public class HomeActivity extends AppCompatActivity {
     private CardView outer_ad_1, outer_ad_2, outer_ad_3, outer_ad_4, outer_ad_5;
     private ImageView ad_1_iv, ad_2_iv, ad_3_iv, ad_4_iv, ad_5_iv;
     private EditText et_search_box;
-    private LinearLayout homeBtn, profileBtn, postBtn, notificationBtn, settingBtn;
+    private LinearLayout homeBtn, manageBtn, postBtn, notificationBtn, settingBtn;
+    private NestedScrollView scrollView;
     private int[] adbgColor = new int[5];
 
 
@@ -53,10 +54,11 @@ public class HomeActivity extends AppCompatActivity {
         ad_5_iv = findViewById(R.id.ad_5_iv);
         et_search_box = findViewById(R.id.et_search_box);
         homeBtn = findViewById(R.id.homeBtn);
-        profileBtn = findViewById(R.id.profileBtn);
+        manageBtn = findViewById(R.id.manageBtn);
         postBtn = findViewById(R.id.postBtn);
         notificationBtn = findViewById(R.id.notificationBtn);
         settingBtn = findViewById(R.id.settingBtn);
+        scrollView = findViewById(R.id.scrollView);
 
         // Get default adbgColor
         adbgColor[0] = outer_ad_1.getCardBackgroundColor().getDefaultColor();
@@ -74,7 +76,7 @@ public class HomeActivity extends AppCompatActivity {
         ad_4_iv.setOnClickListener(ad_4_iv_listener);
         ad_5_iv.setOnClickListener(ad_5_iv_listener);
         homeBtn.setOnClickListener(homeBtn_listener);
-        profileBtn.setOnClickListener(profileBtn_listener);
+        manageBtn.setOnClickListener(manageBtn_listener);
         postBtn.setOnClickListener(postBtn_listener);
         notificationBtn.setOnClickListener(notificationBtn_listener);
         settingBtn.setOnClickListener(settingBtn_listener);
@@ -115,15 +117,16 @@ public class HomeActivity extends AppCompatActivity {
     private View.OnClickListener homeBtn_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(HomeActivity.this, HomeActivity.class);
-            startActivity(intent);
+//            Intent intent = new Intent(HomeActivity.this, HomeActivity.class);
+//            startActivity(intent);
+            scrollView.fullScroll(ScrollView.FOCUS_UP);
         }
     };
 
-    private View.OnClickListener profileBtn_listener = new View.OnClickListener() {
+    private View.OnClickListener manageBtn_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(HomeActivity.this, profile.class);
+            Intent intent = new Intent(HomeActivity.this, PostingActivity.class); // TODO
             startActivity(intent);
         }
     };
@@ -147,7 +150,7 @@ public class HomeActivity extends AppCompatActivity {
     private View.OnClickListener settingBtn_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(HomeActivity.this, PostingActivity.class); // TODO
+            Intent intent = new Intent(HomeActivity.this, booking.class); // TODO
             startActivity(intent);
         }
     };
