@@ -40,4 +40,6 @@ public interface HouseDao {
     @Query("SELECT house_image FROM house_table where house_id = :houseid")
     byte[] getImageByHouseId(int houseid);
 
+    @Query("SELECT * FROM house_table WHERE house_id = :id LIMIT 1")
+    House getHouseById(int id);
 }

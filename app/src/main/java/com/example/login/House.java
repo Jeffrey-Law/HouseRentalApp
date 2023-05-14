@@ -1,5 +1,6 @@
 package com.example.login;
 
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.location.Address;
@@ -36,6 +37,10 @@ public class House {
     @ColumnInfo(name = "price")
     @NonNull
     public int price;
+
+    @ColumnInfo(name = "title")
+    @NonNull
+    public String title;
 
     @ColumnInfo(name = "address")
     @NonNull
@@ -103,9 +108,10 @@ public class House {
     @ColumnInfo(name = "house_image")
     public byte[] house_image;
 
-    public House(int owner_id, int price, @NonNull String address, @NonNull String district, double latitude, double longitude, int bedroom_num, int car_space_num, boolean furnished, boolean pet_considered, @NonNull String house_type, String description, boolean visibility, int post_day, byte[] house_image) {
+    public House(int owner_id, @NonNull String title, int price, @NonNull String address, @NonNull String district, double latitude, double longitude, int bedroom_num, int car_space_num, boolean furnished, boolean pet_considered, @NonNull String house_type, String description, boolean visibility, int post_day, byte[] house_image) {
         this.owner_id = owner_id;
         this.price = price;
+        this.title = title;
         this.address = address;
         this.district = district;
 
@@ -139,6 +145,7 @@ public class House {
         return price;
     }
 
+    public String getTitle() {return title;}
     @NonNull
     public String getAddress() {
         return address;
@@ -202,4 +209,5 @@ public class House {
     public Bitmap getHouse_image() {
         return BitmapFactory.decodeByteArray(house_image, 0, house_image.length);
     }
+
 }
