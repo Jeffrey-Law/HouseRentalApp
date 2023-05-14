@@ -86,7 +86,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:background="@drawable/loginbackground"
+                android:background="@drawable/detail_top_background"
                 android:elevation="3dp"
                 android:layout_marginStart="32dp"
                 android:layout_marginEnd="32dp"
@@ -181,7 +181,7 @@
                         app:layout_constraintEnd_toStartOf="@+id/bedTxt"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/wifi" />
+                        app:srcCompat="@drawable/Wifi" />
 
                     <TextView
                         android:id="@+id/wifiTxt"
