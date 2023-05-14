@@ -22,4 +22,6 @@
     <string name="posting_desc_tv_str">Description:</string>
     <string name="posting_desc_et_str">Description (50 Words Limit)</string>
     <string name="posting_visibility_tv_str">Visible to Public?</string>
+    <string name="posting_publishing_time_tv_str">Publishing Time</string>
+    <string name="posting_posting_tv_str"><font size="12">Posting</font></string>
 </resources>
