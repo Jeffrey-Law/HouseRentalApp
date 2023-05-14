@@ -33,6 +33,10 @@ public class HomeActivity extends AppCompatActivity {
         et_search_box = findViewById(R.id.et_search_box);
 
         ib_favourite.setOnClickListener(ib_favourite_listener);
+        btn_searchwithmap.setOnClickListener(btn_searchwithmap_listener);
+        btn_search.setOnClickListener(btn_search_listener);
+        ad_1_iv.setOnClickListener(ad_1_iv_listener);
+        ad_2_iv.setOnClickListener(ad_2_iv_listener);
     }
 
     private View.OnClickListener ib_favourite_listener = new View.OnClickListener() {
@@ -40,6 +44,36 @@ public class HomeActivity extends AppCompatActivity {
         public void onClick(View v) {
             Intent intent = new Intent(HomeActivity.this, PostingActivity.class);
             startActivity(intent);
+        }
+    };
+
+    private View.OnClickListener btn_searchwithmap_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(HomeActivity.this, PostingActivity.class);
+            startActivity(intent);
+        }
+    };
+
+    private View.OnClickListener btn_search_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(HomeActivity.this, PostingActivity.class);
+            startActivity(intent);
+        }
+    };
+
+    private View.OnClickListener ad_1_iv_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+        }
+    };
+
+    private View.OnClickListener ad_2_iv_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
         }
     };
 }
