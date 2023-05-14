@@ -1,6 +1,8 @@
 package com.example.login;
 
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -12,6 +14,10 @@ public class SignUpActivity extends AppCompatActivity {
 
     TextView username, email, password, re_password;
 
+    ImageView userImage;
+
+    Button uploadbtn, signupbtn;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,5 +25,8 @@ public class SignUpActivity extends AppCompatActivity {
 
         appDatabase = AppDatabaseSingleton.getInstance(this);
         userDao = appDatabase.getUserDao();
+
+        username = findViewById(R.id.signupname)
+
     }
 }
