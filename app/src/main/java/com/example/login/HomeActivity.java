@@ -4,10 +4,13 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.widget.NestedScrollView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,6 +25,7 @@ import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
+import com.example.login.Adapter.hotHouseAdapter;
 
 public class HomeActivity extends AppCompatActivity {
     private ImageButton ib_favourite;
@@ -31,6 +35,7 @@ public class HomeActivity extends AppCompatActivity {
     private EditText et_search_box;
     private LinearLayout homeBtn, manageBtn, postBtn, notificationBtn, settingBtn;
     private NestedScrollView scrollView;
+    private RecyclerView recyclerView_hot;
     private int[] adbgColor = new int[5];
 
 
@@ -59,6 +64,14 @@ public class HomeActivity extends AppCompatActivity {
         notificationBtn = findViewById(R.id.notificationBtn);
         settingBtn = findViewById(R.id.settingBtn);
         scrollView = findViewById(R.id.scrollView);
+        recyclerView_hot = findViewById(R.id.recyclerview_hot);
+
+        recyclerView_hot.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        AppDatabase instance = AppDatabaseSingleton.getInstance(getApplicationContext());
+        recyclerView_hot.setAdapter(new hotHouseAdapter(getApplicationContext(), instance.getHouseDao().getAllHouse()));
+//        Log.d("Size",  String.valueOf(instance.getHouseDao().getAllHouse()));
+
+//                instance.getHouseDao().delete(instance.getHouseDao().findbyhouseid(5));
 
         // Get default adbgColor
         adbgColor[0] = outer_ad_1.getCardBackgroundColor().getDefaultColor();
@@ -84,8 +97,8 @@ public class HomeActivity extends AppCompatActivity {
         // Will be laggy if not using glide to load images
         glideImage(R.drawable.ad1_1, ad_1_iv);
         glideImage(R.drawable.ad2_1, ad_2_iv);
-            glideImage(R.drawable.ad3_1, ad_3_iv);
-            glideImage(R.drawable.ad4_1, ad_4_iv);
+        glideImage(R.drawable.ad3_1, ad_3_iv);
+        glideImage(R.drawable.ad4_1, ad_4_iv);
         glideImage(R.drawable.ad5_1, ad_5_iv);
     }
 
@@ -223,6 +236,10 @@ public class HomeActivity extends AppCompatActivity {
         outer_ad_3.setCardBackgroundColor(adbgColor[2]);
         outer_ad_4.setCardBackgroundColor(adbgColor[3]);
         outer_ad_5.setCardBackgroundColor(adbgColor[4]);
+
+        recyclerView_hot.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        AppDatabase instance = AppDatabaseSingleton.getInstance(getApplicationContext());
+        recyclerView_hot.setAdapter(new hotHouseAdapter(getApplicationContext(), instance.getHouseDao().getAllHouse()));
     }
 
     private void glideImage(int image, ImageView imageView) {
