@@ -5,6 +5,8 @@ import androidx.core.app.ActivityCompat;
 
 import android.content.Context;
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.os.Debug;
 import android.provider.MediaStore;
@@ -17,6 +19,10 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
 
 import javax.net.ssl.HostnameVerifier;
 
@@ -156,9 +162,21 @@ AdapterView.OnItemSelectedListener{
             numOfCarSpace_txt.length()==0 || furnished_sel.length() > 4 || petConsidered_sel.length() > 4 || visibility_sel.length() > 4){
                             Toast.makeText(PostingActivity.this,"Please fill in all the necessary information", Toast.LENGTH_SHORT).show();
             }else{
-
+              double latitude = 0,longitude = 0;
+              Geocoder geocoder = new Geocoder(PostingActivity.this, Locale.getDefault());
+              try {
+                  List<Address> addresses = geocoder.getFromLocationName(address_txt, 1);
+                  if (addresses != null && !addresses.isEmpty()) {
+                      Address address = addresses.get(0);
+                      latitude = address.getLatitude();
+                      longitude = address.getLongitude();
+                      // Do something with the latitude and longitude, such as display them in a TextView or use them to update a map
+                  }
+              } catch (IOException e) {
+                  e.printStackTrace();
+              }
                 Toast.makeText(PostingActivity.this,"Posted", Toast.LENGTH_SHORT).show();
-                House house = new House(123,Integer.parseInt(price_txt),address_txt,district_txt,
+                House house = new House(123,Integer.parseInt(price_txt),address_txt,district_txt,latitude,longitude,
                         Integer.parseInt(numOfBedroom_txt), Integer.parseInt(numOfCarSpace_txt),
                         convertOptionToBoolean(furnished_sel),convertOptionToBoolean(petConsidered_sel),
                         houseType_sel, description_txt,  convertOptionToBoolean(visibility_sel), convertPublishTime(publishingTime.getSelectedItemPosition()));
