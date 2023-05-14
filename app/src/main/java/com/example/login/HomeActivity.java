@@ -66,14 +66,18 @@ public class HomeActivity extends AppCompatActivity {
     private View.OnClickListener ad_1_iv_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
+            Intent intent = new Intent(HomeActivity.this, homeStoryActivity.class);
+            intent.putExtra("target", "ad_1");
+            startActivity(intent);
         }
     };
 
     private View.OnClickListener ad_2_iv_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
+            Intent intent = new Intent(HomeActivity.this, homeStoryActivity.class);
+            intent.putExtra("target", "ad_2");
+            startActivity(intent);
         }
     };
 }
