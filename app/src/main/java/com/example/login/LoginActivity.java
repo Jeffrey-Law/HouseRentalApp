@@ -1,7 +1,9 @@
 package com.example.login;
 
 import android.content.Intent;
+import android.location.SettingInjectorService;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -10,15 +12,9 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.material.button.MaterialButton;
-
 public class LoginActivity extends AppCompatActivity {
-
     Button loginbtn, signupbtn;
     TextView username, password;
-
     AppDatabase appDatabase;
     HouseDao houseDao;
     UserDao userDao;
@@ -35,36 +31,48 @@ public class LoginActivity extends AppCompatActivity {
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
 
-        loginbtn = findViewById(R.id.loginbtn);
+        loginbtn = findViewById(R.id.register_btn);
         signupbtn = findViewById(R.id.signupbtn);
-
-
 
         //MaterialButton loginbtn = (MaterialButton) findViewById(R.id.loginbtn);
         //MaterialButton signupbtn = (MaterialButton) findViewById(R.id.signupbtn);
 
         // login button
-        loginbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (username.getText().toString().equals("admin") && password.getText().toString().equals("admin")) {
-                    //correct
-                    Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
-                } else
-                    //incorrect
-                    Toast.makeText(LoginActivity.this, "Login failed", Toast.LENGTH_SHORT).show();
-            }
-        });
+        loginbtn.setOnClickListener(login);
 
         // change to register page
-        signupbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent registerIntent = new Intent(LoginActivity.this, register.class);
-                startActivity(registerIntent);
-            }
-        });
+        signupbtn.setOnClickListener(signup);
     }
+
+
+    View.OnClickListener login = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            int uid = userDao.findIdByUserName(username.getText().toString());
+//            Log.d("return value: ", String.valueOf(uid));
+//            Log.d("return value: ", userDao.getUserById(uid).getPassward());
+            if (uid != 0) {
+                //correct
+                if(userDao.getUserById(uid).getPassward().equals(password.getText().toString())){
+                    Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
+                    Intent homeIntent = new Intent(LoginActivity.this, HomeActivity.class);
+                    startActivity(homeIntent);
+                }else{
+                    Toast.makeText(LoginActivity.this, "The password is incorrect, please try again", Toast.LENGTH_SHORT).show();
+                }
+            } else
+                //incorrect
+                Toast.makeText(LoginActivity.this, "Invalid Username, please try again", Toast.LENGTH_SHORT).show();
+        }
+    };
+
+    View.OnClickListener signup = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent registerIntent = new Intent(LoginActivity.this, SignUpActivity.class);
+            startActivity(registerIntent);
+        }
+    };
 }
 
 //        // google sign in

@@ -37,7 +37,7 @@ public interface HouseDao {
     @Query("SELECT * FROM house_table ORDER BY rating|(:seq)") // seq equals to ASC or DESC
     List<House> sortHouseRating(String seq);
 
-    @Query("SELECT houseimagepath FROM house_table where house_id = :houseid")
-    String getImageByHouseId(int houseid);
+    @Query("SELECT house_image FROM house_table where house_id = :houseid")
+    byte[] getImageByHouseId(int houseid);
 
 }

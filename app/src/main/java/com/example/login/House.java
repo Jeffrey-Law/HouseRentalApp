@@ -1,5 +1,7 @@
 package com.example.login;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.Address;
 import android.location.Geocoder;
 
@@ -98,10 +100,10 @@ public class House {
     @NonNull
     public boolean visibility;
 
-    @ColumnInfo(name = "houseimagepath")
-    public String houseimagepath;
+    @ColumnInfo(name = "house_image")
+    public byte[] house_image;
 
-    public House(int owner_id, int price, @NonNull String address, @NonNull String district, double latitude, double longitude, int bedroom_num, int car_space_num, boolean furnished, boolean pet_considered, @NonNull String house_type, String description, boolean visibility, int post_day) {
+    public House(int owner_id, int price, @NonNull String address, @NonNull String district, double latitude, double longitude, int bedroom_num, int car_space_num, boolean furnished, boolean pet_considered, @NonNull String house_type, String description, boolean visibility, int post_day, byte[] house_image) {
         this.owner_id = owner_id;
         this.price = price;
         this.address = address;
@@ -122,6 +124,82 @@ public class House {
         this.rating = 0;
         this.no_rating = 0;
         this.availability = true;
-        this.houseimagepath = "D";
+        this.house_image = house_image;
+    }
+
+    public int getHouse_id() {
+        return house_id;
+    }
+
+    public int getOwner_id() {
+        return owner_id;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    @NonNull
+    public String getAddress() {
+        return address;
+    }
+
+    @NonNull
+    public String getDistrict() {
+        return district;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public int getBedroom_num() {
+        return bedroom_num;
+    }
+
+    public int getCar_space_num() {
+        return car_space_num;
+    }
+
+    public boolean isFurnished() {
+        return furnished;
+    }
+
+    public boolean isPet_considered() {
+        return pet_considered;
+    }
+
+    @NonNull
+    public String getHouse_type() {
+        return house_type;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    @NonNull
+    public Date getPost_time() {
+        return post_time;
+    }
+
+    public int getPost_day() {
+        return post_day;
+    }
+
+    public boolean isAvailability() {
+        return availability;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public Bitmap getHouse_image() {
+        return BitmapFactory.decodeByteArray(house_image, 0, house_image.length);
     }
 }

@@ -49,7 +49,7 @@
         android:inputType="textPassword"/>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/loginbtn"
+        android:id="@+id/register_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/password"
@@ -58,18 +58,21 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
-        android:backgroundTint="@color/design_default_color_secondary"
+        android:background="@drawable/background_btn"
         android:text="LOGIN" />
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/signupbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/signupbtn"
-        android:layout_below="@+id/loginbtn"
-        android:text="SIGN UP"
-        android:backgroundTint="@color/design_default_color_secondary"
+        android:layout_below="@+id/register_btn"
         android:layout_centerHorizontal="true"
-        android:layout_margin="10px"/>
+        android:layout_marginStart="10px"
+        android:layout_marginTop="10px"
+        android:layout_marginEnd="10px"
+        android:layout_marginBottom="10px"
+        android:background="@drawable/background_btn"
+        android:text="SIGN UP" />
 
     <TextView
         android:id="@+id/others"
