@@ -62,6 +62,7 @@
                                     app:cardCornerRadius="60dp">
 
                                     <ImageView
+                                        android:id="@+id/ad_1_iv"
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:elevation="8dp"
@@ -122,6 +123,7 @@
                                     app:cardCornerRadius="60dp">
 
                                     <ImageView
+                                        android:id="@+id/ad_2_iv"
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:elevation="8dp"
