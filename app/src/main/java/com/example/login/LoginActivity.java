@@ -49,18 +49,20 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             int uid = userDao.findIdByUserName(username.getText().toString());
-            Log.d("return value: ", String.valueOf(uid));
-            Log.d("return value: ", userDao.getUserById(uid).getPassward());
+//            Log.d("return value: ", String.valueOf(uid));
+//            Log.d("return value: ", userDao.getUserById(uid).getPassward());
             if (uid != 0) {
                 //correct
                 if(userDao.getUserById(uid).getPassward().equals(password.getText().toString())){
                     Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
+                    Intent homeIntent = new Intent(LoginActivity.this, HomeActivity.class);
+                    startActivity(homeIntent);
                 }else{
                     Toast.makeText(LoginActivity.this, "The password is incorrect, please try again", Toast.LENGTH_SHORT).show();
                 }
             } else
                 //incorrect
-                Toast.makeText(LoginActivity.this, "The username is incorrect, please try again", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "Invalid Username, please try again", Toast.LENGTH_SHORT).show();
         }
     };
 
