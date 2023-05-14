@@ -54,9 +54,7 @@ public class MainActivity extends AppCompatActivity {
         buttonInsert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                User user = new User("Joe", "joe@email.com", "12345678", "123", false);
-                userDao.insert(user);
-                updateView();
+
             }
 
         });
@@ -68,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         String text = "";
         for (int i = 0; i < list.size(); i++) {
             User user = list.get(i);
-            text += user.getName() + ":" + user.getEstablish_time() + "\n";
+            text += user.getUserName() + ":" + user.getEstablish_time() + "\n";
         }
         textView.setText(text);
     }

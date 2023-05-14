@@ -18,15 +18,21 @@ public interface UserDao {
     @Delete
     void delete(User user);
 
-    @Query("DELETE FROM user")
+    @Query("DELETE FROM user_table")
     void deleteAll();
 
     @Update
     void updateUser(User user);
 
-    @Query("SELECT * FROM user WHERE user_id LIKE :uid LIMIT 1")
+    @Query("SELECT * FROM user_table WHERE user_id LIKE :uid LIMIT 1")
     User findById(int uid);
 
-    @Query("SELECT * FROM user")
+    @Query("SELECT * FROM user_table")
     List<User> getAll();
+
+    @Query("SELECT user_id FROM user_table WHERE user_name LIKE :name LIMIT 1")
+    int findIdByUserName(String name);
+
+    @Query("SELECT * FROM user_table WHERE user_id = :id LIMIT 1")
+    User getUserById(int id);
 }

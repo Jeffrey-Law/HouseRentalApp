@@ -49,7 +49,7 @@
         android:inputType="textPassword"/>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/loginbtn"
+        android:id="@+id/register_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/password"
@@ -65,7 +65,7 @@
         android:id="@+id/signupbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/loginbtn"
+        android:layout_below="@+id/register_btn"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="10px"
         android:layout_marginTop="10px"
