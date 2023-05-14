@@ -98,10 +98,10 @@ public class House {
     @NonNull
     public boolean visibility;
 
-    @ColumnInfo(name = "houseimagepath")
-    public String houseimagepath;
+    @ColumnInfo(name = "house_image")
+    public byte[] house_image;
 
-    public House(int owner_id, int price, @NonNull String address, @NonNull String district, double latitude, double longitude, int bedroom_num, int car_space_num, boolean furnished, boolean pet_considered, @NonNull String house_type, String description, boolean visibility, int post_day) {
+    public House(int owner_id, int price, @NonNull String address, @NonNull String district, double latitude, double longitude, int bedroom_num, int car_space_num, boolean furnished, boolean pet_considered, @NonNull String house_type, String description, boolean visibility, int post_day, byte[] house_image) {
         this.owner_id = owner_id;
         this.price = price;
         this.address = address;
@@ -122,6 +122,6 @@ public class House {
         this.rating = 0;
         this.no_rating = 0;
         this.availability = true;
-        this.houseimagepath = "D";
+        this.house_image = house_image;
     }
 }

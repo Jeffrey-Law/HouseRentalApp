@@ -1,12 +1,20 @@
 package com.example.login;
 
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.location.Address;
 import android.location.Geocoder;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Debug;
 import android.provider.MediaStore;
@@ -16,11 +24,15 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import java.util.Locale;
 
@@ -40,9 +52,15 @@ AdapterView.OnItemSelectedListener{
     Button upLoadPhotoBtn;
     Button postingBtn;
 
+    ImageView houseImage;
+
     AppDatabase appDatabase;
     UserDao userDao;
     HouseDao houseDao;
+
+    byte[] imageData;
+    ByteArrayOutputStream stream;
+    Bitmap bitmap = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +73,8 @@ AdapterView.OnItemSelectedListener{
 
         postingBtn = findViewById(R.id.posting_btn);
         upLoadPhotoBtn= findViewById(R.id.uploadPhoto_btn);
+
+        houseImage = findViewById(R.id.houseImage_iv);
 
         price = findViewById(R.id.price_et);
         address = findViewById(R.id.address_et);
@@ -111,6 +131,7 @@ AdapterView.OnItemSelectedListener{
 
         upLoadPhotoBtn.setOnClickListener(uploadPhoto);
         postingBtn.setOnClickListener(posting);
+
     }
 
     @Override
@@ -179,10 +200,8 @@ AdapterView.OnItemSelectedListener{
                 House house = new House(123,Integer.parseInt(price_txt),address_txt,district_txt,latitude,longitude,
                         Integer.parseInt(numOfBedroom_txt), Integer.parseInt(numOfCarSpace_txt),
                         convertOptionToBoolean(furnished_sel),convertOptionToBoolean(petConsidered_sel),
-                        houseType_sel, description_txt,  convertOptionToBoolean(visibility_sel), convertPublishTime(publishingTime.getSelectedItemPosition()));
+                        houseType_sel, description_txt,  convertOptionToBoolean(visibility_sel), convertPublishTime(publishingTime.getSelectedItemPosition()),imageData);
                 houseDao.insert(house);
-                User user = new User("Gary", "joe@email.com", "12345678", "123", false);
-                userDao.insert(user);
             }
 
         }
@@ -191,77 +210,39 @@ AdapterView.OnItemSelectedListener{
     private View.OnClickListener uploadPhoto = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-
+            imagePickerLauncher.launch("image/*");
         }
     };
+
+    private ActivityResultLauncher<String> imagePickerLauncher = registerForActivityResult(new ActivityResultContracts.GetContent(), new ActivityResultCallback<Uri>() {
+        @Override
+        public void onActivityResult(Uri result) {
+            if (result != null) {
+                InputStream input = null;
+                try {
+                    input = getContentResolver().openInputStream(result);
+                } catch (FileNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
+                ByteArrayOutputStream output = new ByteArrayOutputStream();
+                byte[] buffer = new byte[1024];
+                int bytesRead;
+                while (true) {
+                    try {
+                        if (!((bytesRead = input.read(buffer)) != -1)) break;
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    output.write(buffer, 0, bytesRead);
+                }
+                imageData = output.toByteArray();
+
+                bitmap = BitmapFactory.decodeByteArray(imageData, 0, imageData.length);
+
+                houseImage.setImageBitmap(bitmap);
+                houseImage.setVisibility(View.VISIBLE);
+                upLoadPhotoBtn.setVisibility(View.INVISIBLE);
+            }
+        }
+    });
 }
-
-
-
-
-//    private void loadImagesFromGallery() {
-//
-//        if (ActivityCompat.checkSelfPermission(MakeNotes.this,
-//                Manifest.permission.READ_EXTERNAL_STORAGE) !=              PackageManager.PERMISSION_GRANTED) {
-//            ActivityCompat.requestPermissions(MakeNotes.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-//                    100);
-//            return;
-//        }
-//
-//        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-//        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
-//        intent.setType("image/*");
-//        startActivityForResult(intent, 1);
-//
-//
-//    }
-//
-//    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
-//    {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if (requestCode == 1 && resultCode == RESULT_OK)
-//        {
-//            imageFragmentContainer.setVisibility(View.VISIBLE);
-//            bitmaps = new ArrayList<>();
-//            imageSources = new ArrayList<>();
-//            ClipData clipData = data.getClipData();
-//            //clip data will be null if user select one item from gallery
-//
-//            if (clipData != null){
-//                for (int i = 0; i < clipData.getItemCount(); i++)
-//                {
-//                    Uri imageUri = clipData.getItemAt(i).getUri();
-//                    try{
-//                        InputStream is = getContentResolver().openInputStream(imageUri);
-//                        Bitmap bitmap = BitmapFactory.decodeStream(is);
-//                        bitmaps.add(bitmap);
-//                        String imageSource =  ImageBitmapString.BitMapToString(bitmap);
-//                        imageSources.add(imageSource);
-//                    }
-//                    catch (FileNotFoundException e){e.printStackTrace();}
-//
-//                }
-//            }
-//            else {
-//                Uri imageUri = data.getData();
-//                try {
-//                    InputStream is = getContentResolver().openInputStream(imageUri);
-//                    Bitmap bitmap = BitmapFactory.decodeStream(is);
-//                    bitmaps.add(bitmap);
-//                    String imageSource =  ImageBitmapString.BitMapToString(bitmap);
-//                    imageSources.add(imageSource);
-//                }
-//                catch (FileNotFoundException e){e.printStackTrace();}
-//            }
-//
-//            RecyclerView imageRecycleView = findViewById(R.id.imageRecycleView);
-//            imageRecycleView.setHasFixedSize(true);
-//            imageRecycleView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
-//            adapter = new ImageAdapter(bitmaps);
-//            imageRecycleView.setAdapter(adapter);
-//
-//        }
-//
-//    }
