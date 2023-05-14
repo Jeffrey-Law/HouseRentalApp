@@ -1,11 +1,14 @@
+package com.example.login;
+
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.CalendarView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class booking extends AppCompatActivity {
 
@@ -15,7 +18,7 @@ public class booking extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.booking);
-        simpleCalendarView = (CalendarView) findViewById(R.id.simpleCalendarView); // get the reference of CalendarView
+        simpleCalendarView = (CalendarView) findViewById(R.id.CalendarView); // get the reference of CalendarView
         simpleCalendarView.setFocusedMonthDateColor(Color.RED); // set the red color for the dates of  focused month
         simpleCalendarView.setUnfocusedMonthDateColor(Color.BLUE); // set the yellow color for the dates of an unfocused month
         simpleCalendarView.setSelectedWeekBackgroundColor(Color.RED); // red color for the selected week's background
