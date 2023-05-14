@@ -24,4 +24,5 @@
     <string name="posting_visibility_tv_str">Visible to Public?</string>
     <string name="posting_publishing_time_tv_str">Publishing Time</string>
     <string name="posting_posting_tv_str"><font size="12">Posting</font></string>
+    <string name="posting_district_tv_str">District</string>
 </resources>

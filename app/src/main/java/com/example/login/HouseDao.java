@@ -25,8 +25,8 @@ public interface HouseDao {
     @Query("SELECT * FROM house_table")
     List<House> getAllHouse();
 
-    @Query("SELECT * FROM house_table WHERE house_id LIKE (:houseid)")
-    List<House> findbyhouseid(int houseid);
+    @Query("SELECT * FROM house_table WHERE house_id LIKE (:houseid) LIMIT 1")
+    House findbyhouseid(int houseid);
 
     @Query("SELECT * FROM house_table WHERE (latitude LIKE (:lat) AND longitude LIKE (:lon))")
     List<House> findbycoordinate(float lat, float lon);
@@ -39,4 +39,5 @@ public interface HouseDao {
 
     @Query("SELECT houseimagepath FROM house_table where house_id = :houseid")
     String getImageByHouseId(int houseid);
+
 }

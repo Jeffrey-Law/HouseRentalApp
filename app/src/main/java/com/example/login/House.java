@@ -1,19 +1,25 @@
 package com.example.login;
 
+import android.location.Address;
+import android.location.Geocoder;
+
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
+
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 @Entity(tableName = "house_table")
-
 // Changed post_id -> house_id, ower_id -> owner_id, no_bedroom -> bedroom_num, no_car_space -> car_space_num,available -> availability, no_rating deleted, char[] changed to String
 public class House {
     @PrimaryKey(autoGenerate = true)
@@ -33,13 +39,17 @@ public class House {
     @NonNull
     public String address;
 
+    @ColumnInfo(name = "district")
+    @NonNull
+    public String district;
+
     @ColumnInfo(name = "latitude") // Get coordinate (latitude, longitude) from Google Map
     @NonNull
-    public float latitude;
+    public double latitude;
 
     @ColumnInfo(name = "longitude") // Get coordinate (latitude, longitude) from Google Map
     @NonNull
-    public float longitude;
+    public double longitude;
 
     @ColumnInfo(name = "bedroom_num")
     @NonNull
@@ -68,13 +78,9 @@ public class House {
     @NonNull
     public Date post_time;
 
-    @ColumnInfo(name = "start_date")
+    @ColumnInfo(name = "post_day")
     @NonNull
-    public Date start_date;
-
-    @ColumnInfo(name = "end_date")
-    @NonNull
-    public Date end_date;
+    public int post_day;
 
     @ColumnInfo(name = "availability")
     @NonNull
@@ -84,6 +90,10 @@ public class House {
     @NonNull
     public int rating;
 
+    @ColumnInfo(name = "no_rating")
+    @NonNull
+    public int no_rating;
+
     @ColumnInfo(name = "visibility")
     @NonNull
     public boolean visibility;
@@ -91,6 +101,27 @@ public class House {
     @ColumnInfo(name = "houseimagepath")
     public String houseimagepath;
 
-    public House(){
+    public House(int owner_id, int price, @NonNull String address, @NonNull String district, double latitude, double longitude, int bedroom_num, int car_space_num, boolean furnished, boolean pet_considered, @NonNull String house_type, String description, boolean visibility, int post_day) {
+        this.owner_id = owner_id;
+        this.price = price;
+        this.address = address;
+        this.district = district;
+
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.bedroom_num = bedroom_num;
+        this.car_space_num = car_space_num;
+        this.furnished = furnished;
+        this.pet_considered = pet_considered;
+        this.house_type = house_type;
+        this.description = description;
+        this.visibility = visibility;
+
+        this.post_time = new Date();
+        this.post_day = post_day;
+        this.rating = 0;
+        this.no_rating = 0;
+        this.availability = true;
+        this.houseimagepath = "D";
     }
 }
