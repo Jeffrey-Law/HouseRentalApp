@@ -113,8 +113,9 @@ public class GoogleMapActivity extends AppCompatActivity implements OnMapReadyCa
             @Override
             public void onInfoWindowClick(Marker marker) {
                 Log.d("Info Window:", marker.getTitle());
-                //Intent intent = new Intent(GoogleMapActivity.this, DetailActivity.class);
-                //startActivity(intent);
+                Intent intent = new Intent(GoogleMapActivity.this, DetailActivity.class);
+                intent.putExtra("house_id", marker.getTitle());
+                startActivity(intent);
             }
         });
 

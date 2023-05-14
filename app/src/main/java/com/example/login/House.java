@@ -141,8 +141,8 @@ public class House {
         return owner_id;
     }
 
-    public int getPrice() {
-        return price;
+    public String getPrice() {
+        return String.valueOf(price);
     }
 
     public String getTitle() {return title;}
@@ -164,14 +164,14 @@ public class House {
         return longitude;
     }
 
-    public int getBedroom_num() {
-        return bedroom_num;
+    public String getBedroom_num() {
+        return String.valueOf(bedroom_num);
     }
 
-    public int getCar_space_num() {
-        return car_space_num;
-    }
+    public String getCar_space_num() {
 
+        return String.valueOf(car_space_num);
+    }
     public boolean isFurnished() {
         return furnished;
     }
