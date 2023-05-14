@@ -181,7 +181,7 @@
                         app:layout_constraintEnd_toStartOf="@+id/bedTxt"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/Wifi" />
+                        app:srcCompat="@drawable/wifi" />
 
                     <TextView
                         android:id="@+id/wifiTxt"
