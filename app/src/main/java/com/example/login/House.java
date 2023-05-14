@@ -13,7 +13,6 @@ import java.util.Calendar;
 import java.util.Date;
 
 @Entity(tableName = "house_table")
-
 // Changed post_id -> house_id, ower_id -> owner_id, no_bedroom -> bedroom_num, no_car_space -> car_space_num,available -> availability, no_rating deleted, char[] changed to String
 public class House {
     @PrimaryKey(autoGenerate = true)
@@ -32,6 +31,10 @@ public class House {
     @ColumnInfo(name = "address")
     @NonNull
     public String address;
+
+    @ColumnInfo(name = "district")
+    @NonNull
+    public String district;
 
     @ColumnInfo(name = "latitude") // Get coordinate (latitude, longitude) from Google Map
     @NonNull
@@ -68,13 +71,9 @@ public class House {
     @NonNull
     public Date post_time;
 
-    @ColumnInfo(name = "start_date")
+    @ColumnInfo(name = "post_day")
     @NonNull
-    public Date start_date;
-
-    @ColumnInfo(name = "end_date")
-    @NonNull
-    public Date end_date;
+    public int post_day;
 
     @ColumnInfo(name = "availability")
     @NonNull
@@ -84,6 +83,10 @@ public class House {
     @NonNull
     public int rating;
 
+    @ColumnInfo(name = "no_rating")
+    @NonNull
+    public int no_rating;
+
     @ColumnInfo(name = "visibility")
     @NonNull
     public boolean visibility;
@@ -91,6 +94,26 @@ public class House {
     @ColumnInfo(name = "houseimagepath")
     public String houseimagepath;
 
-    public House(){
+    public House(int owner_id, int price, @NonNull String address, @NonNull String district, int bedroom_num, int car_space_num, boolean furnished, boolean pet_considered, @NonNull String house_type, String description, boolean visibility, int post_day) {
+        this.owner_id = owner_id;
+        this.price = price;
+        this.address = address;
+        this.district = district;
+        this.latitude = 1;
+        this.longitude = 2;
+        this.bedroom_num = bedroom_num;
+        this.car_space_num = car_space_num;
+        this.furnished = furnished;
+        this.pet_considered = pet_considered;
+        this.house_type = house_type;
+        this.description = description;
+        this.visibility = visibility;
+
+        this.post_time = new Date();
+        this.post_day = post_day;
+        this.rating = 0;
+        this.no_rating = 0;
+        this.availability = true;
+        this.houseimagepath = "D";
     }
 }

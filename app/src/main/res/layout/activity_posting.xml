@@ -115,6 +115,34 @@
                 android:paddingBottom="10dp">
 
                 <TextView
+                    android:id="@+id/district_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:text="@string/posting_district_tv_str"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <Spinner
+                    android:id="@+id/district_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:minHeight="48dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingStart="20dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="20dp"
+                android:paddingBottom="10dp">
+
+                <TextView
                     android:id="@+id/bedroom_tv"
                     android:layout_width="161dp"
                     android:layout_height="wrap_content"
@@ -155,7 +183,7 @@
                     android:textSize="16sp" />
 
                 <EditText
-                    android:id="@+id/editTextNumber"
+                    android:id="@+id/carspace_et"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

@@ -29,9 +29,10 @@ import java.util.concurrent.Executors;
 import android.view.LayoutInflater;
 
 public class MainActivity extends AppCompatActivity {
-    static AppDatabase appDatabase;
+    AppDatabase appDatabase;
     UserDao userDao;
     HouseDao houseDao;
+
     Button buttonInsert, buttonUpdate, buttonDelete, buttonClear;
     TextView textView;
 
@@ -39,21 +40,14 @@ public class MainActivity extends AppCompatActivity {
     GoogleSignInClient gsc;
     ImageView googlebtn;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.database_testing);
 
-        //Database related
-        appDatabase = Room.databaseBuilder(this, AppDatabase.class, "user_database")
-                .allowMainThreadQueries().build();
-        userDao = appDatabase.getUserDao();
+        appDatabase = AppDatabaseSingleton.getInstance(this);
         houseDao = appDatabase.getHouseDao();
-
-// Close the database when done
-
-        setContentView(R.layout.database_testing);
+        userDao = appDatabase.getUserDao();
 
         buttonInsert = findViewById(R.id.buttonInsert);
         textView = findViewById(R.id.textView);
@@ -69,9 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public static AppDatabase getAppDatabase() {
-        return appDatabase;
-    }
+
 
     public void updateView() {
         List<User> list = userDao.getAll();
