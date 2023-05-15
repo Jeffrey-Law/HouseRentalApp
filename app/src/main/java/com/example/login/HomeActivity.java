@@ -90,8 +90,6 @@ public class HomeActivity extends AppCompatActivity implements HotHouseInterface
 
 //        Log.d("Size",  String.valueOf(instance.getHouseDao().getAllHouse()));
 
-//                instance.getHouseDao().delete(instance.getHouseDao().findbyhouseid(5));
-
         // Get default adbgColor
         adbgColor[0] = outer_ad_1.getCardBackgroundColor().getDefaultColor();
         adbgColor[1] = outer_ad_2.getCardBackgroundColor().getDefaultColor();
@@ -193,7 +191,6 @@ private View.OnTouchListener toolbar_listener = new View.OnTouchListener() {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(HomeActivity.this, search_result.class);
-            // TODO: Pass edittext content to search
             String text = et_search_box.getText().toString();
             intent.putExtra("keywords", text);
             intent.putExtra("user_id", user_id);
@@ -215,7 +212,7 @@ private View.OnTouchListener toolbar_listener = new View.OnTouchListener() {
     private View.OnClickListener viewBtn_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(HomeActivity.this, view.class); // TODO
+            Intent intent = new Intent(HomeActivity.this, view.class);
             intent.putExtra("user_id", user_id);
             startActivity(intent);
         }
@@ -233,7 +230,7 @@ private View.OnTouchListener toolbar_listener = new View.OnTouchListener() {
     private View.OnClickListener notificationBtn_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(HomeActivity.this, NotificationActivity.class); // TODO
+            Intent intent = new Intent(HomeActivity.this, NotificationActivity.class);
             intent.putExtra("user_id", user_id);
             startActivity(intent);
         }
@@ -242,7 +239,7 @@ private View.OnTouchListener toolbar_listener = new View.OnTouchListener() {
     private View.OnClickListener settingBtn_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(HomeActivity.this, SettingActivity.class); // TODO
+            Intent intent = new Intent(HomeActivity.this, SettingActivity.class);
             intent.putExtra("user_id", user_id);
             startActivity(intent);
         }
@@ -322,7 +319,7 @@ private View.OnTouchListener toolbar_listener = new View.OnTouchListener() {
         recyclerView_hot.setAdapter(new hotHouseAdapter(getApplicationContext(), instance.getHouseDao().sortHouseRatingDesc(), this));
         recyclerView_district.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         recyclerView_district.setAdapter(new districtAdapter(getApplicationContext(), districts, imageId, this));
-
+//        instance.getHouseDao().delete(instance.getHouseDao().findbyhouseid(2));
         if (scrollView != null) {
             int width = scrollView.getWidth();
             int height = scrollView.getHeight();
