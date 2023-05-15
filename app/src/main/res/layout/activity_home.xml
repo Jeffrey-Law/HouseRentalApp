@@ -3,9 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/coordinator">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -297,7 +299,8 @@
                                 android:layout_margin="5dp"
                                 android:elevation="8dp"
                                 app:cardCornerRadius="90dp"
-                                app:contentPadding="5dp">
+                                app:contentPadding="5dp"
+                                app:cardBackgroundColor="#0000FF">
 
                                 <androidx.cardview.widget.CardView
                                     android:layout_width="match_parent"
@@ -458,8 +461,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/toolbar"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        >
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 <!--        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"-->
 
         <LinearLayout
