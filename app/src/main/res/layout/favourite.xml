@@ -92,7 +92,8 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="15dp"
                     android:text="back"
-                    android:textSize="18dp" />
+                    android:textSize="18dp"
+                    android:background="@drawable/blue_rounded_shape"/>
             </LinearLayout>
         </ScrollView>
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/loginbackground"
+    android:background="#3f9dff"
     tools:context=".MainActivity"
     tools:ignore="ExtraText">
 
@@ -20,18 +20,21 @@
         android:gravity="center"/>
 
     <EditText
+        android:id="@+id/username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/username"
         android:layout_below="@+id/signin"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
         android:background="#30ffffff"
-        android:hint="Username"
-        android:textColorHint="@color/white"
-        android:textColor="@color/white"
-        android:layout_margin="10dp"
-        android:padding="20dp"
         android:drawableLeft="@drawable/baseline_person_outline_24"
-        android:drawablePadding="20dp"/>
+        android:drawablePadding="20dp"
+        android:hint="Username"
+        android:padding="20dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white" />
 
     <EditText
         android:layout_width="match_parent"
@@ -50,28 +53,28 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/register_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="159dp"
+        android:layout_height="60dp"
         android:layout_below="@+id/password"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
-        android:background="@drawable/background_btn"
+        android:background="@drawable/blue_rounded_shape"
         android:text="LOGIN" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/signupbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="159dp"
+        android:layout_height="64dp"
         android:layout_below="@+id/register_btn"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="10px"
         android:layout_marginTop="10px"
         android:layout_marginEnd="10px"
         android:layout_marginBottom="10px"
-        android:background="@drawable/background_btn"
+        android:background="@drawable/blue_rounded_shape"
         android:text="SIGN UP" />
 
     <TextView

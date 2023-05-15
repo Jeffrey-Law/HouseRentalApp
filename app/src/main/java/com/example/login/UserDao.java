@@ -35,4 +35,10 @@ public interface UserDao {
 
     @Query("SELECT * FROM user_table WHERE user_id = :id LIMIT 1")
     User getUserById(int id);
+
+    @Query("SELECT user_name FROM user_table WHERE user_id = :id LIMIT 1")
+    String getUserNameById(int id);
+
+    @Query("SELECT contact FROM user_table WHERE user_id = :id LIMIT 1")
+    String getContactById(int id);
 }

@@ -19,6 +19,7 @@ public class DetailActivity extends AppCompatActivity {
     AppDatabase appDatabase;
     HouseDao houseDao;
     House house;
+    int user_id;
 
 
     @Override
@@ -45,6 +46,14 @@ public class DetailActivity extends AppCompatActivity {
 
         String house_id_txt = getIntent().getStringExtra("house_id");
 
+        user_id = getIntent().getIntExtra("user_id",0);
+
+        if(user_id == 0){
+            Log.d("Error: ", "fall to access user id");
+        }else{
+            Log.d("Detail Activity : ", String.valueOf(user_id));
+        }
+
         if(house_id_txt.isEmpty()){
             Log.d("Error: ", "fall to access house id");
         }else{
@@ -68,14 +77,14 @@ public class DetailActivity extends AppCompatActivity {
             }else
                 pet.setImageResource(R.drawable.decline);
         }
-
-
     }
 
     View.OnClickListener booking = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             Intent intent = new Intent(DetailActivity.this, BookingActivity.class);
+            intent.putExtra("house_id", house.getHouse_id());
+            intent.putExtra("user_id", user_id);
             startActivity(intent);
         }
     };

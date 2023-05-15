@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/loginbackground"
+    android:background="#3f9dff"
     tools:context=".register">
 
 
@@ -44,11 +44,13 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:srcCompat="@tools:sample/avatars" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/uploadUserImage_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="142dp"
+                android:layout_height="54dp"
+                android:background="@drawable/blue_rounded_shape"
                 android:text="@string/signup_upload_tv_str"
+                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -130,7 +132,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
-            android:background="@drawable/background_btn"
+            android:background="@drawable/blue_rounded_shape"
             android:text="REGISTER" />
 
     </LinearLayout>
