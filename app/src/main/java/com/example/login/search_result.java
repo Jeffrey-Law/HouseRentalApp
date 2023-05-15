@@ -8,14 +8,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.login.Adapter.districtAdapter;
-import com.example.login.Adapter.hotHouseAdapter;
 import com.example.login.Adapter.resultAdapter;
 import com.example.login.RecyclerViewInterface.SearchResultInterface;
 
 public class search_result extends AppCompatActivity implements SearchResultInterface {
     private RecyclerView recyclerView_result;
     private String district = "";
+    private String keywords = "";
+    private Boolean searchDistrict = false;
     private int user_id;
 
     @Override
@@ -24,12 +24,21 @@ public class search_result extends AppCompatActivity implements SearchResultInte
         setContentView(R.layout.result_of_search);
 
         Log.d("TAG", "Reached search_result ");
-        Bundle bundle = getIntent().getExtras();
-        if (bundle != null) {
-            district = bundle.getString("district");
-//            Log.d("Bundle String", district);
+
+        Intent intent = getIntent();
+
+        if (intent.hasExtra("district")) {
+            district = intent.getStringExtra("district");
+            Log.d("Intent String district", district);
+            searchDistrict = true;
         } else {
-            Log.d("Bundle", "EMPTY");
+            Log.d("Intent district", "EMPTY");
+        }
+
+        if (intent.hasExtra("keywords")) {
+            keywords = intent.getStringExtra("keywords");
+        } else {
+            Log.d("Intent keywords", "EMPTY");
         }
 
         user_id = getIntent().getIntExtra("user_id",0);
@@ -44,7 +53,10 @@ public class search_result extends AppCompatActivity implements SearchResultInte
 
         AppDatabase instance = AppDatabaseSingleton.getInstance(getApplicationContext());
         recyclerView_result.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        recyclerView_result.setAdapter(new resultAdapter(getApplicationContext(), instance.getHouseDao().findHouseByDistrict(district), this));
+        if(searchDistrict == true)
+            recyclerView_result.setAdapter(new resultAdapter(getApplicationContext(), instance.getHouseDao().findHouseByDistrict(district), this));
+        else
+            recyclerView_result.setAdapter(new resultAdapter(getApplicationContext(), instance.getHouseDao().findbyhousetitle(keywords), this));
     }
 
     public void onItemClickSearchResult(int id) {

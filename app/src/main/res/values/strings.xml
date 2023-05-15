@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">House Rental App</string>
     <string name="home_tv_welcome_msg">Welcome to House Rental App!</string>
-    <string name="home_search_hint_str"><font size="14">Search with any criteria, e.g. Location, Type</font></string>
+    <string name="home_search_hint_str"><font size="14">Search with House Title</font></string>
     <string name="home_tv_hot_houses_title_str">Hot/Trending Houses</string>
     <string name="home_tv_district_title_str">District</string>
     <string name="home_tv_district_Location_str">Location</string>
