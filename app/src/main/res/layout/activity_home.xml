@@ -66,8 +66,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:elevation="8dp"
-                                        android:scaleType="centerCrop"
-                                        android:src="@drawable/ad1_1" />
+                                        android:scaleType="centerCrop" />
 
                                 </androidx.cardview.widget.CardView>
 
@@ -127,8 +126,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:elevation="8dp"
-                                        android:scaleType="centerCrop"
-                                        android:src="@drawable/ad2_1" />
+                                        android:scaleType="centerCrop" />
 
                                 </androidx.cardview.widget.CardView>
 
@@ -188,8 +186,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:elevation="8dp"
-                                        android:scaleType="centerCrop"
-                                        android:src="@drawable/ad3_1" />
+                                        android:scaleType="centerCrop" />
 
                                 </androidx.cardview.widget.CardView>
 
@@ -249,8 +246,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:elevation="8dp"
-                                        android:scaleType="centerCrop"
-                                        android:src="@drawable/ad4_1" />
+                                        android:scaleType="centerCrop" />
 
                                 </androidx.cardview.widget.CardView>
 
@@ -310,8 +306,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:elevation="8dp"
-                                        android:scaleType="centerCrop"
-                                        android:src="@drawable/ad5_1" />
+                                        android:scaleType="centerCrop" />
 
                                 </androidx.cardview.widget.CardView>
 
@@ -340,12 +335,14 @@
 
 
         </LinearLayout>
+
         <View
             android:id="@+id/divider"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/light_blue"
-            app:layout_scrollFlags="scroll"/>
+            app:layout_scrollFlags="scroll" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -358,8 +355,8 @@
                 android:layout_weight="1"
                 android:orientation="horizontal"
                 android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="10dp">
+                android:paddingTop="10dp"
+                android:paddingRight="10dp">
 
                 <TextView
                     android:id="@+id/tv_title"
@@ -385,17 +382,6 @@
                     android:scaleType="fitXY"
                     app:srcCompat="@drawable/favourite" />
 
-                <!--                <ImageButton-->
-                <!--                    android:id="@+id/ib_notification"-->
-                <!--                    android:layout_width="48dp"-->
-                <!--                    android:layout_height="48dp"-->
-                <!--                    android:layout_alignParentEnd="true"-->
-                <!--                    android:layout_weight=".5"-->
-                <!--                    android:background="?attr/selectableItemBackgroundBorderless"-->
-                <!--                    android:contentDescription="Go to Notification Page"-->
-                <!--                    android:scaleType="fitXY"-->
-                <!--                    app:srcCompat="@drawable/bell" />-->
-
             </LinearLayout>
 
             <LinearLayout
@@ -412,8 +398,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:padding="10dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="10dp">
 
                     <EditText
                         android:id="@+id/et_search_box"
@@ -437,32 +423,24 @@
                             android:id="@+id/btn_searchwithmap"
                             android:layout_width="wrap_content"
                             android:layout_height="48dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_weight="2"
                             android:background="@drawable/blue_rounded_shape"
                             android:text="@string/home_searchwithmap_str"
-                            android:layout_weight="2"
-                            android:textColor="#FFFFFF"
-                            android:layout_marginRight="5dp"/>
+                            android:textColor="#FFFFFF" />
 
                         <androidx.appcompat.widget.AppCompatButton
                             android:id="@+id/btn_search"
                             android:layout_width="wrap_content"
                             android:layout_height="48dp"
-                            android:background="@drawable/blue_rounded_shape"
                             android:layout_weight="1"
+                            android:background="@drawable/blue_rounded_shape"
                             android:text="@string/home_search_str"
                             android:textColor="#FFFFFF" />
 
                     </LinearLayout>
 
                 </LinearLayout>
-
-                <!--                <ImageView-->
-                <!--                    android:id="@+id/iv_search_icon"-->
-                <!--                    android:layout_width="wrap_content"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:layout_gravity="center_vertical"-->
-                <!--                    android:layout_margin="8dp"-->
-                <!--                    android:src="@drawable/search" />-->
 
             </LinearLayout>
 
@@ -473,14 +451,14 @@
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
-
-
         android:layout_height="match_parent"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:orientation="vertical">
 
             <LinearLayout
@@ -499,214 +477,14 @@
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
-<!--                <HorizontalScrollView-->
-<!--                    android:id="@+id/hsv_hot_houses"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:padding="8dp">-->
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerview_hot"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                        android:padding="8dp"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerview_hot"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="8dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-                    <!--                    <LinearLayout-->
-                    <!--                        android:layout_width="wrap_content"-->
-                    <!--                        android:layout_height="match_parent"-->
-                    <!--                        android:orientation="horizontal">-->
-
-                    <!--                        <androidx.cardview.widget.CardView-->
-                    <!--                            android:id="@+id/cv_hot_house_1"-->
-                    <!--                            android:layout_width="200dp"-->
-                    <!--                            android:layout_height="wrap_content"-->
-                    <!--                            android:layout_marginEnd="8dp"-->
-                    <!--                            android:padding="8dp"-->
-                    <!--                            app:cardCornerRadius="20dp">-->
-
-                    <!--                            <LinearLayout-->
-                    <!--                                android:layout_width="match_parent"-->
-                    <!--                                android:layout_height="wrap_content"-->
-                    <!--                                android:layout_marginTop="8dp"-->
-                    <!--                                android:background="#AAAAAA"-->
-                    <!--                                android:orientation="vertical">-->
-
-                    <!--                                <ImageView-->
-                    <!--                                    android:id="@+id/iv_house_image_1"-->
-                    <!--                                    android:layout_width="match_parent"-->
-                    <!--                                    android:layout_height="120dp"-->
-                    <!--                                    android:scaleType="fitXY"-->
-                    <!--                                    android:src="@drawable/house2" />-->
-
-                    <!--                                <TextView-->
-                    <!--                                    android:id="@+id/tv_house_name_1"-->
-                    <!--                                    android:layout_width="match_parent"-->
-                    <!--                                    android:layout_height="wrap_content"-->
-                    <!--                                    android:layout_marginBottom="5dp"-->
-                    <!--                                    android:background="@color/black"-->
-                    <!--                                    android:paddingLeft="5dp"-->
-                    <!--                                    android:text="House 1"-->
-                    <!--                                    android:textColor="#FFFFFF"-->
-                    <!--                                    android:textSize="16sp"-->
-                    <!--                                    android:textStyle="bold" />-->
-
-                    <!--                                <TextView-->
-                    <!--                                    android:id="@+id/tv_house_price_1"-->
-                    <!--                                    android:layout_width="match_parent"-->
-                    <!--                                    android:layout_height="wrap_content"-->
-                    <!--                                    android:layout_marginBottom="5dp"-->
-                    <!--                                    android:background="@color/black"-->
-                    <!--                                    android:paddingLeft="5dp"-->
-                    <!--                                    android:text="$580/day"-->
-                    <!--                                    android:textColor="#FFFFFF"-->
-                    <!--                                    android:textSize="14sp"-->
-                    <!--                                    android:textStyle="bold" />-->
-
-                    <!--                                <TextView-->
-                    <!--                                    android:id="@+id/tv_house_address_1"-->
-                    <!--                                    android:layout_width="match_parent"-->
-                    <!--                                    android:layout_height="wrap_content"-->
-                    <!--                                    android:layout_marginBottom="5dp"-->
-                    <!--                                    android:background="@color/black"-->
-                    <!--                                    android:paddingLeft="5dp"-->
-                    <!--                                    android:text="Sai Kung"-->
-                    <!--                                    android:textColor="#FFFFFF"-->
-                    <!--                                    android:textSize="14sp" />-->
-
-                    <!--                                <LinearLayout-->
-                    <!--                                    android:id="@+id/ratingContainer_1"-->
-                    <!--                                    android:layout_width="match_parent"-->
-                    <!--                                    android:layout_height="match_parent"-->
-                    <!--                                    android:background="@color/black"-->
-                    <!--                                    android:orientation="horizontal">-->
-
-                    <!--                                    <ImageView-->
-                    <!--                                        android:id="@+id/star1_1"-->
-                    <!--                                        android:layout_width="wrap_content"-->
-                    <!--                                        android:layout_height="wrap_content"-->
-                    <!--                                        android:layout_weight="0"-->
-                    <!--                                        android:paddingLeft="5dp"-->
-                    <!--                                        app:srcCompat="@drawable/star" />-->
-
-                    <!--                                    <ImageView-->
-                    <!--                                        android:id="@+id/star1_2"-->
-                    <!--                                        android:layout_width="wrap_content"-->
-                    <!--                                        android:layout_height="wrap_content"-->
-                    <!--                                        android:layout_weight="0"-->
-                    <!--                                        app:srcCompat="@drawable/star" />-->
-
-                    <!--                                    <ImageView-->
-                    <!--                                        android:id="@+id/star1_3"-->
-                    <!--                                        android:layout_width="wrap_content"-->
-                    <!--                                        android:layout_height="wrap_content"-->
-                    <!--                                        android:layout_weight="0"-->
-                    <!--                                        app:srcCompat="@drawable/star" />-->
-
-                    <!--                                    <ImageView-->
-                    <!--                                        android:id="@+id/star1_4"-->
-                    <!--                                        android:layout_width="wrap_content"-->
-                    <!--                                        android:layout_height="wrap_content"-->
-                    <!--                                        android:layout_weight="0"-->
-                    <!--                                        app:srcCompat="@drawable/star" />-->
-
-                    <!--                                    <ImageView-->
-                    <!--                                        android:id="@+id/star1_5"-->
-                    <!--                                        android:layout_width="wrap_content"-->
-                    <!--                                        android:layout_height="wrap_content"-->
-                    <!--                                        android:layout_weight="0"-->
-                    <!--                                        app:srcCompat="@drawable/star" />-->
-                    <!--                                </LinearLayout>-->
-                    <!--                            </LinearLayout>-->
-
-                    <!--                        </androidx.cardview.widget.CardView>-->
-
-                    <!--                        <androidx.cardview.widget.CardView-->
-                    <!--                            android:id="@+id/cv_hot_house_2"-->
-                    <!--                            android:layout_width="200dp"-->
-                    <!--                            android:layout_height="wrap_content"-->
-                    <!--                            android:layout_marginEnd="8dp"-->
-                    <!--                            android:padding="8dp"-->
-                    <!--                            app:cardCornerRadius="20dp">-->
-
-                    <!--                            <LinearLayout-->
-                    <!--                                android:layout_width="match_parent"-->
-                    <!--                                android:layout_height="wrap_content"-->
-                    <!--                                android:layout_marginTop="8dp"-->
-                    <!--                                android:background="#AAAAAA"-->
-                    <!--                                android:orientation="vertical">-->
-
-                    <!--                                <ImageView-->
-                    <!--                                    android:id="@+id/iv_house_image_2"-->
-                    <!--                                    android:layout_width="match_parent"-->
-                    <!--                                    android:layout_height="120dp"-->
-                    <!--                                    android:scaleType="fitXY"-->
-                    <!--                                    android:src="@drawable/waterhouse" />-->
-
-                    <!--                                <TextView-->
-                    <!--                                    android:id="@+id/tv_house_name_2"-->
-                    <!--                                    android:layout_width="match_parent"-->
-                    <!--                                    android:layout_height="wrap_content"-->
-                    <!--                                    android:layout_marginBottom="5dp"-->
-                    <!--                                    android:background="@color/black"-->
-                    <!--                                    android:paddingLeft="5dp"-->
-                    <!--                                    android:text="House 2"-->
-                    <!--                                    android:textColor="#FFFFFF"-->
-                    <!--                                    android:textSize="16sp"-->
-                    <!--                                    android:textStyle="bold" />-->
-
-                    <!--                                <TextView-->
-                    <!--                                    android:id="@+id/tv_house_price_2"-->
-                    <!--                                    android:layout_width="match_parent"-->
-                    <!--                                    android:layout_height="wrap_content"-->
-                    <!--                                    android:layout_marginBottom="5dp"-->
-                    <!--                                    android:background="@color/black"-->
-                    <!--                                    android:paddingLeft="5dp"-->
-                    <!--                                    android:text="$1520/day"-->
-                    <!--                                    android:textColor="#FFFFFF"-->
-                    <!--                                    android:textSize="14sp"-->
-                    <!--                                    android:textStyle="bold" />-->
-
-                    <!--                                <TextView-->
-                    <!--                                    android:id="@+id/tv_house_address_2"-->
-                    <!--                                    android:layout_width="match_parent"-->
-                    <!--                                    android:layout_height="wrap_content"-->
-                    <!--                                    android:layout_marginBottom="5dp"-->
-                    <!--                                    android:background="@color/black"-->
-                    <!--                                    android:paddingLeft="5dp"-->
-                    <!--                                    android:text="Choi Hung"-->
-                    <!--                                    android:textColor="#FFFFFF"-->
-                    <!--                                    android:textSize="14sp" />-->
-
-                    <!--                                <LinearLayout-->
-                    <!--                                    android:id="@+id/ratingContainer_2"-->
-                    <!--                                    android:layout_width="match_parent"-->
-                    <!--                                    android:layout_height="match_parent"-->
-                    <!--                                    android:background="@color/black"-->
-                    <!--                                    android:orientation="horizontal">-->
-
-                    <!--                                    <ImageView-->
-                    <!--                                        android:id="@+id/star2_1"-->
-                    <!--                                        android:layout_width="wrap_content"-->
-                    <!--                                        android:layout_height="wrap_content"-->
-                    <!--                                        android:layout_weight="0"-->
-                    <!--                                        android:paddingLeft="5dp"-->
-                    <!--                                        app:srcCompat="@drawable/star" />-->
-
-                    <!--                                    <ImageView-->
-                    <!--                                        android:id="@+id/star2_2"-->
-                    <!--                                        android:layout_width="wrap_content"-->
-                    <!--                                        android:layout_height="wrap_content"-->
-                    <!--                                        android:layout_weight="0"-->
-                    <!--                                        app:srcCompat="@drawable/star" />-->
-                    <!--                                </LinearLayout>-->
-                    <!--                            </LinearLayout>-->
-
-                    <!--                        </androidx.cardview.widget.CardView>-->
-
-                    <!--                    </LinearLayout>-->
-
-<!--                </HorizontalScrollView>-->
 
             </LinearLayout>
 
@@ -726,233 +504,104 @@
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
-                <HorizontalScrollView
-                    android:id="@+id/hsv_location_buttons_1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <androidx.cardview.widget.CardView
-                            android:id="@+id/cv_district_1"
-                            android:layout_width="100dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="8dp"
-                            app:cardCornerRadius="20dp">
-
-                            <ImageButton
-                                android:id="@+id/ib_district_1"
-                                android:layout_width="match_parent"
-                                android:layout_height="150dp"
-                                android:contentDescription="District-Taipo"
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/taipo" />
-
-                            <TextView
-                                android:id="@+id/tv_district_1"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="5dp"
-                                android:background="@color/light_grey"
-                                android:paddingLeft="5dp"
-                                android:text="Tai Po"
-                                android:textAlignment="center"
-                                android:textColor="#FFFFFF"
-                                android:textSize="16sp"
-                                android:textStyle="bold" />
-
-                        </androidx.cardview.widget.CardView>
-
-                        <androidx.cardview.widget.CardView
-                            android:id="@+id/cv_district_2"
-                            android:layout_width="100dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="8dp"
-                            app:cardCornerRadius="20dp">
-
-                            <ImageButton
-                                android:id="@+id/ib_district_2"
-                                android:layout_width="match_parent"
-                                android:layout_height="150dp"
-                                android:contentDescription="District-WanChai"
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/wanchai" />
-
-                            <TextView
-                                android:id="@+id/tv_district_2"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="5dp"
-                                android:background="@color/light_grey"
-                                android:paddingLeft="5dp"
-                                android:text="Wan Chai"
-                                android:textAlignment="center"
-                                android:textColor="#FFFFFF"
-                                android:textSize="16sp"
-                                android:textStyle="bold" />
-
-                        </androidx.cardview.widget.CardView>
-
-                        <androidx.cardview.widget.CardView
-                            android:id="@+id/cv_district_3"
-                            android:layout_width="100dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="8dp"
-                            app:cardCornerRadius="20dp">
-
-                            <ImageButton
-                                android:id="@+id/ib_district_3"
-                                android:layout_width="match_parent"
-                                android:layout_height="150dp"
-                                android:contentDescription="District-MongKok"
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/mongkok" />
-
-                            <TextView
-                                android:id="@+id/tv_district_3"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="5dp"
-                                android:background="@color/light_grey"
-                                android:paddingLeft="5dp"
-                                android:text="Mong Kok"
-                                android:textAlignment="center"
-                                android:textColor="#FFFFFF"
-                                android:textSize="16sp"
-                                android:textStyle="bold" />
-
-                        </androidx.cardview.widget.CardView>
-
-                        <androidx.cardview.widget.CardView
-                            android:id="@+id/cv_district_4"
-                            android:layout_width="100dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="8dp"
-                            app:cardCornerRadius="20dp">
-
-                            <ImageButton
-                                android:id="@+id/ib_district_4"
-                                android:layout_width="match_parent"
-                                android:layout_height="150dp"
-                                android:contentDescription="District-KwunTong"
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/kwuntong" />
-
-                            <TextView
-                                android:id="@+id/tv_district_4"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="5dp"
-                                android:background="@color/light_grey"
-                                android:paddingLeft="5dp"
-                                android:text="Kwun Tong"
-                                android:textAlignment="center"
-                                android:textColor="#FFFFFF"
-                                android:textSize="16sp"
-                                android:textStyle="bold" />
-
-                        </androidx.cardview.widget.CardView>
-
-                    </LinearLayout>
-
-                </HorizontalScrollView>
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:id="@+id/recyclerView_district"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:padding="8dp"
+                                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/location_section_2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
+            <!--            <LinearLayout-->
+            <!--                android:id="@+id/location_section_2"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:orientation="vertical"-->
+            <!--                android:padding="16dp">-->
 
-                <TextView
-                    android:id="@+id/tv_location_title_2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="16dp"
-                    android:text="@string/home_tv_district_title_str"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+            <!--                <TextView-->
+            <!--                    android:id="@+id/tv_location_title_2"-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:padding="16dp"-->
+            <!--                    android:text="@string/home_tv_district_title_str"-->
+            <!--                    android:textSize="18sp"-->
+            <!--                    android:textStyle="bold" />-->
 
-                <HorizontalScrollView
-                    android:id="@+id/hsv_location_buttons_2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp">
+            <!--                <HorizontalScrollView-->
+            <!--                    android:id="@+id/hsv_location_buttons_2"-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:padding="8dp">-->
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
+            <!--                    <LinearLayout-->
+            <!--                        android:layout_width="wrap_content"-->
+            <!--                        android:layout_height="match_parent"-->
+            <!--                        android:orientation="horizontal">-->
 
-                        <ImageButton
-                            android:id="@+id/ib_location_test2"
-                            android:layout_width="120dp"
-                            android:layout_height="120dp"
-                            android:layout_marginEnd="8dp"
-                            android:background="@drawable/circle_button"
-                            android:contentDescription="Location-HKUST"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/hkust" />
+            <!--                        <ImageButton-->
+            <!--                            android:id="@+id/ib_location_test2"-->
+            <!--                            android:layout_width="120dp"-->
+            <!--                            android:layout_height="120dp"-->
+            <!--                            android:layout_marginEnd="8dp"-->
+            <!--                            android:background="@drawable/circle_button"-->
+            <!--                            android:contentDescription="Location-HKUST"-->
+            <!--                            android:scaleType="fitXY"-->
+            <!--                            android:src="@drawable/hkust" />-->
 
-                    </LinearLayout>
+            <!--                    </LinearLayout>-->
 
-                </HorizontalScrollView>
+            <!--                </HorizontalScrollView>-->
 
-            </LinearLayout>
+            <!--            </LinearLayout>-->
 
-            <LinearLayout
-                android:id="@+id/location_section_3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
+            <!--            <LinearLayout-->
+            <!--                android:id="@+id/location_section_3"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:orientation="vertical"-->
+            <!--                android:padding="16dp">-->
 
-                <TextView
-                    android:id="@+id/tv_location_title_3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="16dp"
-                    android:text="@string/home_tv_district_title_str"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+            <!--                <TextView-->
+            <!--                    android:id="@+id/tv_location_title_3"-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:padding="16dp"-->
+            <!--                    android:text="@string/home_tv_district_title_str"-->
+            <!--                    android:textSize="18sp"-->
+            <!--                    android:textStyle="bold" />-->
 
-                <HorizontalScrollView
-                    android:id="@+id/hsv_location_buttons_3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp">
+            <!--                <HorizontalScrollView-->
+            <!--                    android:id="@+id/hsv_location_buttons_3"-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:padding="8dp">-->
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
+            <!--                    <LinearLayout-->
+            <!--                        android:layout_width="wrap_content"-->
+            <!--                        android:layout_height="match_parent"-->
+            <!--                        android:orientation="horizontal">-->
 
-                        <ImageButton
-                            android:id="@+id/ib_location_test3"
-                            android:layout_width="120dp"
-                            android:layout_height="120dp"
-                            android:layout_marginEnd="8dp"
-                            android:background="@drawable/circle_button"
-                            android:contentDescription="Location-HKUST"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/hkust" />
+            <!--                        <ImageButton-->
+            <!--                            android:id="@+id/ib_location_test3"-->
+            <!--                            android:layout_width="120dp"-->
+            <!--                            android:layout_height="120dp"-->
+            <!--                            android:layout_marginEnd="8dp"-->
+            <!--                            android:background="@drawable/circle_button"-->
+            <!--                            android:contentDescription="Location-HKUST"-->
+            <!--                            android:scaleType="fitXY"-->
+            <!--                            android:src="@drawable/hkust" />-->
 
-                    </LinearLayout>
+            <!--                    </LinearLayout>-->
 
-                </HorizontalScrollView>
+            <!--                </HorizontalScrollView>-->
 
-            </LinearLayout>
+            <!--            </LinearLayout>-->
 
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
-
 
 
     <com.google.android.material.appbar.AppBarLayout
@@ -1096,3 +745,10 @@
     </com.google.android.material.appbar.AppBarLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <!--                <HorizontalScrollView-->
+    <!--                    android:id="@+id/hsv_hot_houses"-->
+    <!--                    android:layout_width="match_parent"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:padding="8dp">-->
+    <!--                </HorizontalScrollView>-->

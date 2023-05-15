@@ -26,15 +26,15 @@ public class hotHouseAdapter extends RecyclerView.Adapter<hotHouseAdapter.ViewHo
         this.list = list;
     }
 
-    @NonNull
+    /*@NonNull*/
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(/*@NonNull*/ ViewGroup parent, int viewType) {
         return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.house_card, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-//        Log.d("Position", String.valueOf(position));
+    public void onBindViewHolder(/*@NonNull*/ ViewHolder holder, int position) {
+        Log.d("Position", String.valueOf(position));
         holder.iv_house_image.setImageBitmap(list.get(position).getHouse_image());
         holder.tv_house_name.setText("House " + list.get(position).getHouse_id()); // TODO: Change to getHouse name
         holder.tv_house_price.setText("$" + list.get(position).getPrice() + "/day");
@@ -98,7 +98,7 @@ public class hotHouseAdapter extends RecyclerView.Adapter<hotHouseAdapter.ViewHo
         ImageView iv_house_image, star1, star2, star3, star4, star5;
         TextView tv_house_name, tv_house_price, tv_house_district;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(/*@NonNull*/ View itemView) {
             super(itemView);
 
             iv_house_image = itemView.findViewById(R.id.iv_house_image);

@@ -25,6 +25,7 @@ import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
+import com.example.login.Adapter.districtAdapter;
 import com.example.login.Adapter.hotHouseAdapter;
 
 public class HomeActivity extends AppCompatActivity {
@@ -35,8 +36,13 @@ public class HomeActivity extends AppCompatActivity {
     private EditText et_search_box;
     private LinearLayout homeBtn, manageBtn, postBtn, notificationBtn, settingBtn;
     private NestedScrollView scrollView;
-    private RecyclerView recyclerView_hot;
+    private RecyclerView recyclerView_hot, recyclerView_district;
     private int[] adbgColor = new int[5];
+
+    private String[] districts = {"Central and Western", "Eastern", "Southern", "Wan Chai", "Sham Shui Po",
+            "Kowloon City", "Kwun Tong", "Wong Tai Sin", "Yau Tsim Mong", "Islands", "Kwai Tsing",
+            "North", "Sai Kung", "Sha Tin", "Tai Po", "Tsuen Wan", "Tuen Mun", "Yuen Long"};
+    private int[] imageId = {R.drawable.centralandwestern, R.drawable.eastern, R.drawable.southern, R.drawable.wanchai, R.drawable.shamshuipo, R.drawable.kowlooncity, R.drawable.kwuntong, R.drawable.wongtaisin,R.drawable.yautsimmong, R.drawable.islands,R.drawable.kwaitsing, R.drawable.north, R.drawable.saikung, R.drawable.shatin, R.drawable.taipo, R.drawable.tsuenwan,R.drawable.tuenmun,R.drawable.yuenlong};
 
 
     @Override
@@ -65,10 +71,15 @@ public class HomeActivity extends AppCompatActivity {
         settingBtn = findViewById(R.id.settingBtn);
         scrollView = findViewById(R.id.scrollView);
         recyclerView_hot = findViewById(R.id.recyclerview_hot);
+        recyclerView_district = findViewById(R.id.recyclerView_district);
 
-        recyclerView_hot.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         AppDatabase instance = AppDatabaseSingleton.getInstance(getApplicationContext());
+        recyclerView_hot.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         recyclerView_hot.setAdapter(new hotHouseAdapter(getApplicationContext(), instance.getHouseDao().getAllHouse()));
+        recyclerView_district.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        recyclerView_district.setAdapter(new districtAdapter(getApplicationContext(), districts, imageId));
+
+
 //        Log.d("Size",  String.valueOf(instance.getHouseDao().getAllHouse()));
 
 //                instance.getHouseDao().delete(instance.getHouseDao().findbyhouseid(5));
@@ -237,9 +248,11 @@ public class HomeActivity extends AppCompatActivity {
         outer_ad_4.setCardBackgroundColor(adbgColor[3]);
         outer_ad_5.setCardBackgroundColor(adbgColor[4]);
 
-        recyclerView_hot.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        AppDatabase instance = AppDatabaseSingleton.getInstance(getApplicationContext());
-        recyclerView_hot.setAdapter(new hotHouseAdapter(getApplicationContext(), instance.getHouseDao().getAllHouse()));
+//        AppDatabase instance = AppDatabaseSingleton.getInstance(getApplicationContext());
+//        recyclerView_hot.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+//        recyclerView_hot.setAdapter(new hotHouseAdapter(getApplicationContext(), instance.getHouseDao().getAllHouse()));
+//        recyclerView_district.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+//        recyclerView_district.setAdapter(new districtAdapter(getApplicationContext(), districts, imageId));
     }
 
     private void glideImage(int image, ImageView imageView) {
