@@ -62,6 +62,8 @@ AdapterView.OnItemSelectedListener{
     ByteArrayOutputStream stream;
     Bitmap bitmap = null;
 
+    int user_id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -133,6 +135,13 @@ AdapterView.OnItemSelectedListener{
         upLoadPhotoBtn.setOnClickListener(uploadPhoto);
         postingBtn.setOnClickListener(posting);
 
+        user_id = getIntent().getIntExtra("user_id",0);
+
+        if(user_id == 0){
+            Log.d("Error: ", "fall to access user id");
+        }else{
+            Log.d("Post Activity : ", String.valueOf(user_id));
+        }
     }
 
     @Override
@@ -207,11 +216,12 @@ AdapterView.OnItemSelectedListener{
                     imageData = stream.toByteArray();
                 }
 
-                House house = new House(123, title_txt, Integer.parseInt(price_txt),address_txt,district_txt,latitude,longitude,
+                House house = new House(user_id, title_txt, Integer.parseInt(price_txt),address_txt,district_txt,latitude,longitude,
                         Integer.parseInt(numOfBedroom_txt), Integer.parseInt(numOfCarSpace_txt),
                         convertOptionToBoolean(furnished_sel),convertOptionToBoolean(petConsidered_sel),
                         houseType_sel, description_txt,  convertOptionToBoolean(visibility_sel), convertPublishTime(publishingTime.getSelectedItemPosition()),imageData);
                 houseDao.insert(house);
+                finish();
             }
 
         }

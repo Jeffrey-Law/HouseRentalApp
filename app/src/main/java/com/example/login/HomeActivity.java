@@ -44,7 +44,7 @@ public class HomeActivity extends AppCompatActivity {
             "North", "Sai Kung", "Sha Tin", "Tai Po", "Tsuen Wan", "Tuen Mun", "Yuen Long"};
     private int[] imageId = {R.drawable.centralandwestern, R.drawable.eastern, R.drawable.southern, R.drawable.wanchai, R.drawable.shamshuipo, R.drawable.kowlooncity, R.drawable.kwuntong, R.drawable.wongtaisin,R.drawable.yautsimmong, R.drawable.islands,R.drawable.kwaitsing, R.drawable.north, R.drawable.saikung, R.drawable.shatin, R.drawable.taipo, R.drawable.tsuenwan,R.drawable.tuenmun,R.drawable.yuenlong};
 
-
+    private int user_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -111,12 +111,21 @@ public class HomeActivity extends AppCompatActivity {
         glideImage(R.drawable.ad3_1, ad_3_iv);
         glideImage(R.drawable.ad4_1, ad_4_iv);
         glideImage(R.drawable.ad5_1, ad_5_iv);
+
+        user_id = getIntent().getIntExtra("user_id",0);
+
+        if(user_id == 0){
+            Log.d("Error: ", "fall to access user id");
+        }else{
+            Log.d("Home Activity : ", String.valueOf(user_id));
+        }
     }
 
     private View.OnClickListener ib_favourite_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(HomeActivity.this, favourite.class);
+            intent.putExtra("user_id", user_id);
             startActivity(intent);
         }
     };
@@ -124,7 +133,8 @@ public class HomeActivity extends AppCompatActivity {
     private View.OnClickListener btn_searchwithmap_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(HomeActivity.this, PostingActivity.class); // TODO
+            Intent intent = new Intent(HomeActivity.this, GoogleMapActivity.class); // TODO
+            intent.putExtra("user_id", user_id);
             startActivity(intent);
         }
     };
@@ -134,6 +144,7 @@ public class HomeActivity extends AppCompatActivity {
         public void onClick(View v) {
             Intent intent = new Intent(HomeActivity.this, search_result.class);
             // TODO: Pass edittext content to search
+            intent.putExtra("user_id", user_id);
             startActivity(intent);
         }
     };
@@ -142,6 +153,7 @@ public class HomeActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
 //            Intent intent = new Intent(HomeActivity.this, HomeActivity.class);
+//            intent.putExtra("user_id", user_id);
 //            startActivity(intent);
             scrollView.fullScroll(ScrollView.FOCUS_UP);
         }
@@ -151,6 +163,7 @@ public class HomeActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(HomeActivity.this, PostingActivity.class); // TODO
+            intent.putExtra("user_id", user_id);
             startActivity(intent);
         }
     };
@@ -159,6 +172,7 @@ public class HomeActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(HomeActivity.this, PostingActivity.class);
+            intent.putExtra("user_id", user_id);
             startActivity(intent);
         }
     };
@@ -167,6 +181,7 @@ public class HomeActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(HomeActivity.this, PostingActivity.class); // TODO
+            intent.putExtra("user_id", user_id);
             startActivity(intent);
         }
     };
@@ -174,7 +189,8 @@ public class HomeActivity extends AppCompatActivity {
     private View.OnClickListener settingBtn_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(HomeActivity.this, booking.class); // TODO
+            Intent intent = new Intent(HomeActivity.this, BookingActivity.class); // TODO
+            intent.putExtra("user_id", user_id);
             startActivity(intent);
         }
     };

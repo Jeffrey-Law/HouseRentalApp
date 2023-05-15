@@ -35,8 +35,8 @@ public class GoogleMapActivity extends AppCompatActivity implements OnMapReadyCa
     private static final int MAX_HEIGHT = 200;
     AppDatabase appDatabase;
     HouseDao houseDao;
-
     List<House> houses;
+    int user_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +51,15 @@ public class GoogleMapActivity extends AppCompatActivity implements OnMapReadyCa
         houseDao = appDatabase.getHouseDao();
 
         houses = houseDao.getAllHouse();
+
+        user_id = getIntent().getIntExtra("user_id",0);
+
+        if(user_id == 0){
+            Log.d("Error: ", "fall to access user id");
+        }else{
+            Log.d("Google Map Activity : ", String.valueOf(user_id));
+        }
+
     }
 
     /**
@@ -115,6 +124,7 @@ public class GoogleMapActivity extends AppCompatActivity implements OnMapReadyCa
                 Log.d("Info Window:", marker.getTitle());
                 Intent intent = new Intent(GoogleMapActivity.this, DetailActivity.class);
                 intent.putExtra("house_id", marker.getTitle());
+                intent.putExtra("user_id", user_id);
                 startActivity(intent);
             }
         });

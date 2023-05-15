@@ -56,6 +56,7 @@ public class LoginActivity extends AppCompatActivity {
                 if(userDao.getUserById(uid).getPassward().equals(password.getText().toString())){
                     Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
                     Intent homeIntent = new Intent(LoginActivity.this, HomeActivity.class);
+                    homeIntent.putExtra("user_id", uid);
                     startActivity(homeIntent);
                 }else{
                     Toast.makeText(LoginActivity.this, "The password is incorrect, please try again", Toast.LENGTH_SHORT).show();

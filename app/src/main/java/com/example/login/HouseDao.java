@@ -42,4 +42,7 @@ public interface HouseDao {
 
     @Query("SELECT * FROM house_table WHERE house_id = :id LIMIT 1")
     House getHouseById(int id);
+
+    @Query("SELECT owner_id FROM house_table WHERE house_id = :id LIMIT 1")
+    int getOwnerById(int id);
 }

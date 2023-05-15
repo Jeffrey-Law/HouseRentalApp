@@ -7,11 +7,12 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
-@Database(entities = {User.class, House.class}, version = 1,exportSchema = false)
+@Database(entities = {User.class, House.class, Booking.class}, version = 1,exportSchema = false)
 @TypeConverters({Converters.class})
 public abstract class AppDatabase extends RoomDatabase {
     public abstract UserDao getUserDao();
     public abstract HouseDao getHouseDao();
+    public abstract  BookingDao getBookingDao();
 
 
 //    public static final String DATABASE_NAME = "HouseDb";
