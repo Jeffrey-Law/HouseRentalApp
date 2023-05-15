@@ -367,6 +367,7 @@ private View.OnTouchListener toolbar_listener = new View.OnTouchListener() {
         Intent intent = new Intent(HomeActivity.this, DetailActivity.class);
         Log.d("TAG", "Reached onItemClick " + id);
         intent.putExtra("house_id", id);
+        intent.putExtra("user_id", user_id);
         startActivity(intent);
     }
 

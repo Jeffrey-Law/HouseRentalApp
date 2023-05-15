@@ -55,7 +55,8 @@
                                 android:layout_margin="5dp"
                                 android:elevation="8dp"
                                 app:cardCornerRadius="90dp"
-                                app:contentPadding="5dp">
+                                app:contentPadding="5dp"
+                                app:cardBackgroundColor="#0000FF">
 
                                 <androidx.cardview.widget.CardView
                                     android:layout_width="match_parent"
@@ -115,7 +116,8 @@
                                 android:layout_margin="5dp"
                                 android:elevation="8dp"
                                 app:cardCornerRadius="90dp"
-                                app:contentPadding="5dp">
+                                app:contentPadding="5dp"
+                                app:cardBackgroundColor="#0000FF">
 
                                 <androidx.cardview.widget.CardView
                                     android:layout_width="match_parent"
@@ -175,7 +177,8 @@
                                 android:layout_margin="5dp"
                                 android:elevation="8dp"
                                 app:cardCornerRadius="90dp"
-                                app:contentPadding="5dp">
+                                app:contentPadding="5dp"
+                                app:cardBackgroundColor="#0000FF">
 
                                 <androidx.cardview.widget.CardView
                                     android:layout_width="match_parent"
@@ -235,7 +238,8 @@
                                 android:layout_margin="5dp"
                                 android:elevation="8dp"
                                 app:cardCornerRadius="90dp"
-                                app:contentPadding="5dp">
+                                app:contentPadding="5dp"
+                                app:cardBackgroundColor="#0000FF">
 
                                 <androidx.cardview.widget.CardView
                                     android:layout_width="match_parent"

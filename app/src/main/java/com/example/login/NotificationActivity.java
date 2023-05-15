@@ -2,6 +2,8 @@ package com.example.login;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,7 +14,7 @@ import com.example.login.Adapter.notificationAdapter;
 public class NotificationActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
-
+    TextView no_request_found;
     AppDatabase appDatabase;
     BookingDao bookingDao;
     int user_id;
@@ -23,6 +25,8 @@ public class NotificationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_notification);
 
         recyclerView = findViewById(R.id.recyclerview);
+
+        no_request_found = findViewById(R.id.no_request_tv);
 
         appDatabase = AppDatabaseSingleton.getInstance(this);
         bookingDao = appDatabase.getBookingDao();
@@ -39,6 +43,12 @@ public class NotificationActivity extends AppCompatActivity {
     }
 
     private void display(){
+        if(bookingDao.getAllRequestFromBooker(user_id).size() != 0){
+            no_request_found.setVisibility(View.INVISIBLE);
+        }else{
+            no_request_found.setVisibility(View.VISIBLE);
+        }
         recyclerView.setAdapter(new notificationAdapter(getApplicationContext(),bookingDao.getAllRequestFromBooker(user_id)));
+
     }
 }
