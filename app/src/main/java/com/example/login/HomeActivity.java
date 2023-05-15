@@ -123,6 +123,7 @@ public class HomeActivity extends AppCompatActivity implements HotHouseInterface
         glideImage(R.drawable.settings, iv_setting);
 
         Log.d("TAG", "REACHED BOTTOM OF ONCREATE()");
+
         user_id = getIntent().getIntExtra("user_id",0);
 
         if(user_id == 0){
@@ -358,7 +359,7 @@ private View.OnTouchListener toolbar_listener = new View.OnTouchListener() {
 //        House selectedHouse = instance.getHouseDao().getHouseById(position);
 
         Intent intent = new Intent(HomeActivity.this, DetailActivity.class);
-
+        Log.d("TAG", "Reached onItemClick " + id);
         intent.putExtra("house_id", id);
         startActivity(intent);
     }

@@ -44,8 +44,9 @@ public class DetailActivity extends AppCompatActivity {
         appDatabase = AppDatabaseSingleton.getInstance(this);
         houseDao = appDatabase.getHouseDao();
 
-        String house_id_txt = getIntent().getStringExtra("house_id");
 
+        int house_id = getIntent().getIntExtra("house_id", 0);
+//        Log.d("TAG", "Reached detailActivity");
         user_id = getIntent().getIntExtra("user_id",0);
 
         if(user_id == 0){
@@ -54,10 +55,11 @@ public class DetailActivity extends AppCompatActivity {
             Log.d("Detail Activity : ", String.valueOf(user_id));
         }
 
-        if(house_id_txt.isEmpty()){
-            Log.d("Error: ", "fall to access house id");
+        if(house_id == 0){
+            Log.d("Error: ", "fail to access house id");
+            finish();
         }else{
-            house = houseDao.getHouseById(Integer.parseInt(house_id_txt));
+            house = houseDao.getHouseById(house_id);
             Log.d("house Id : ", String.valueOf(house.getHouse_id()));
 
             title.setText(house.getTitle());
