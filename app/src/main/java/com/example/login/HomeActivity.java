@@ -3,6 +3,7 @@ package com.example.login;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -29,6 +30,7 @@ import com.bumptech.glide.request.target.Target;
 import com.example.login.Adapter.districtAdapter;
 import com.example.login.Adapter.hotHouseAdapter;
 import com.example.login.RecyclerViewInterface.HotHouseInterface;
+import com.google.android.material.appbar.AppBarLayout;
 
 public class HomeActivity extends AppCompatActivity implements HotHouseInterface {
     private ImageButton ib_favourite;
@@ -40,6 +42,8 @@ public class HomeActivity extends AppCompatActivity implements HotHouseInterface
     private NestedScrollView scrollView;
     private RecyclerView recyclerView_hot, recyclerView_district;
     private int[] adbgColor = new int[5];
+    private CoordinatorLayout coordinator;
+    private AppBarLayout app_bar;
 
     private String[] districts = {"Central and Western", "Eastern", "Southern", "Wan Chai", "Sham Shui Po",
             "Kowloon City", "Kwun Tong", "Wong Tai Sin", "Yau Tsim Mong", "Islands", "Kwai Tsing",
@@ -80,6 +84,8 @@ public class HomeActivity extends AppCompatActivity implements HotHouseInterface
         iv_post = findViewById(R.id.iv_post);
         iv_notification = findViewById(R.id.iv_notification);
         iv_setting = findViewById(R.id.iv_setting);
+        coordinator = findViewById(R.id.coordinator);
+        app_bar = findViewById(R.id.app_bar);
 
         scrollView.setVisibility(View.VISIBLE);
 
@@ -178,7 +184,7 @@ private View.OnTouchListener toolbar_listener = new View.OnTouchListener() {
     private View.OnClickListener btn_searchwithmap_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(HomeActivity.this, GoogleMapActivity.class); // TODO
+            Intent intent = new Intent(HomeActivity.this, GoogleMapActivity.class);
             intent.putExtra("user_id", user_id);
             startActivity(intent);
         }
@@ -197,10 +203,10 @@ private View.OnTouchListener toolbar_listener = new View.OnTouchListener() {
     private View.OnClickListener homeBtn_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-//            Intent intent = new Intent(HomeActivity.this, HomeActivity.class);
-//            intent.putExtra("user_id", user_id);
-//            startActivity(intent);
-            scrollView.fullScroll(ScrollView.FOCUS_UP);
+            scrollView.smoothScrollTo(0,0);
+            coordinator.scrollTo(0, 0);
+            app_bar.setExpanded(true);
+            scrollView.scrollTo(0, 0);
         }
     };
 
@@ -311,9 +317,9 @@ private View.OnTouchListener toolbar_listener = new View.OnTouchListener() {
 
         AppDatabase instance = AppDatabaseSingleton.getInstance(getApplicationContext());
         recyclerView_hot.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        recyclerView_hot.setAdapter(new hotHouseAdapter(getApplicationContext(), instance.getHouseDao().sortHouseRating("DESC"), this));
+        recyclerView_hot.setAdapter(new hotHouseAdapter(getApplicationContext(), instance.getHouseDao().sortHouseRatingDesc(), this));
         recyclerView_district.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        recyclerView_district.setAdapter(new districtAdapter(getApplicationContext(), districts, imageId));
+        recyclerView_district.setAdapter(new districtAdapter(getApplicationContext(), districts, imageId, this));
 
         if (scrollView != null) {
             int width = scrollView.getWidth();
@@ -361,6 +367,13 @@ private View.OnTouchListener toolbar_listener = new View.OnTouchListener() {
         Intent intent = new Intent(HomeActivity.this, DetailActivity.class);
         Log.d("TAG", "Reached onItemClick " + id);
         intent.putExtra("house_id", id);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onItemClickDistrict(String district) {
+        Intent intent = new Intent(HomeActivity.this, search_result.class);
+        intent.putExtra("district", district);
         startActivity(intent);
     }
 }
