@@ -35,18 +35,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <ImageButton
-                    android:id="@+id/owner_profile_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:scaleType="fitCenter"
-                    tools:srcCompat="@tools:sample/avatars" />
+                <ImageView
+                    android:id="@+id/booker_response_profile_btn"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/icon" />
 
                 <TextView
                     android:id="@+id/booking_response_title_tv"
-                    android:layout_width="303dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_marginBottom="5dp"
                     android:background="@color/black"
                     android:paddingLeft="5dp"
@@ -63,7 +61,7 @@
                 android:layout_marginBottom="5dp"
                 android:background="@color/black"
                 android:paddingLeft="5dp"
-                android:text="@string/booking_response_tv"
+                android:text="@string/booking_description_tv_str"
                 android:textColor="#FFFFFF"
                 android:textSize="16sp" />
 
@@ -80,11 +78,11 @@
                     android:layout_weight="1" />
 
                 <ImageView
-                    android:id="@+id/booking_request_result"
+                    android:id="@+id/booking_response_status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/accept" />
+                    app:srcCompat="@drawable/question_mark" />
 
                 <Space
                     android:layout_width="wrap_content"

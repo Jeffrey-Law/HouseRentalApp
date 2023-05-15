@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -63,7 +64,8 @@ public class notificationResponseAdapter extends RecyclerView.Adapter<notificati
         return list.size();
     }
     class ViewHolder extends RecyclerView.ViewHolder {
-        ImageButton booker_profile, yes, no;
+        ImageButton  yes, no;
+        ImageView booker_profile;
         TextView title, description;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -74,36 +76,35 @@ public class notificationResponseAdapter extends RecyclerView.Adapter<notificati
             title = itemView.findViewById(R.id.booking_title_tv);
             description = itemView.findViewById(R.id.booking_description_tv);
         }
-        public void bind(Booking booking, int position) {
+
+    public void bind(Booking booking, int position) {
         // Set the click listener for the detail button
-            yes.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                   Log.d("Accept Request", String.valueOf(booking.getBooking_id()));
-                    booking.setStatus(1);
-                    AppDatabaseSingleton.getInstance(context).getBookingDao().updateBooking(booking);
-                    updateBookings();
-                    Log.d("Booking result: ", String.valueOf(AppDatabaseSingleton.getInstance(context).getBookingDao().getBookingById(booking.getBooking_id()).getStatus()));
-                }
-            });
-            no.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Log.d("Decline Request", String.valueOf(booking.getBooking_id()));
-                    booking.setStatus(2);
-                    AppDatabaseSingleton.getInstance(context).getBookingDao().updateBooking(booking);
-                    updateBookings();
-                    Log.d("Booking result: ", String.valueOf(AppDatabaseSingleton.getInstance(context).getBookingDao().getBookingById(booking.getBooking_id()).getStatus()));
-                }
-            });
-
-        }
+        yes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("Accept Request", String.valueOf(booking.getBooking_id()));
+                booking.setStatus(1);
+                AppDatabaseSingleton.getInstance(context).getBookingDao().updateBooking(booking);
+                updateBookings();
+                Log.d("Booking result: ", String.valueOf(AppDatabaseSingleton.getInstance(context).getBookingDao().getBookingById(booking.getBooking_id()).getStatus()));
+            }
+        });
+        no.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("Decline Request", String.valueOf(booking.getBooking_id()));
+                booking.setStatus(2);
+                AppDatabaseSingleton.getInstance(context).getBookingDao().updateBooking(booking);
+                updateBookings();
+                Log.d("Booking result: ", String.valueOf(AppDatabaseSingleton.getInstance(context).getBookingDao().getBookingById(booking.getBooking_id()).getStatus()));
+            }
+        });
     }
-
     public void updateBookings() {
         list.clear();
         list = AppDatabaseSingleton.getInstance(context).getBookingDao().getAllRequestFromBooker(owner_id);
         notifyDataSetChanged();
+    }
     }
 
 
