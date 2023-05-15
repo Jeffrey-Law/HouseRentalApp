@@ -30,7 +30,7 @@ public class resultAdapter extends RecyclerView.Adapter<resultAdapter.ViewHolder
     @NonNull
     @Override
     public resultAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.house_card, parent, false), searchResultAdapter);
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.house_card2, parent, false), searchResultAdapter);
     }
 
     @Override

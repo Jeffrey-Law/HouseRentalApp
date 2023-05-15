@@ -195,7 +195,10 @@ private View.OnTouchListener toolbar_listener = new View.OnTouchListener() {
         public void onClick(View v) {
             Intent intent = new Intent(HomeActivity.this, search_result.class);
             // TODO: Pass edittext content to search
+            String text = et_search_box.getText().toString();
+            intent.putExtra("keywords", text);
             intent.putExtra("user_id", user_id);
+            et_search_box.setText("");
             startActivity(intent);
         }
     };
