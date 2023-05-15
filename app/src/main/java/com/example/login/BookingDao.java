@@ -31,4 +31,10 @@ public interface BookingDao {
 
     @Query("SELECT date FROM booking_table WHERE booking_id = :id LIMIT 1")
     Date getBookingDateById(int id);
+
+    @Query("SELECT * FROM booking_table")
+    List<Booking> getAllReqest();
+
+    @Query("SELECT * FROM booking_table WHERE house_owner_id = :id")
+    List<Booking> getAllRequestFromBooker(int id);
 }

@@ -18,19 +18,16 @@ import com.example.login.R;
 
 import org.w3c.dom.Text;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class notificationAdapter extends RecyclerView.Adapter<notificationAdapter.ViewHolder> {
     Context context;
     List<Booking> list;
-
-
-
     public notificationAdapter(Context context, List<Booking> list) {
         this.context = context;
         this.list = list;
     }
-
     @NonNull
     @Override
     public notificationAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -41,11 +38,17 @@ public class notificationAdapter extends RecyclerView.Adapter<notificationAdapte
     public void onBindViewHolder(@NonNull notificationAdapter.ViewHolder holder, int position) {
             String title_txt = "A Booking Request From " + AppDatabaseSingleton.getInstance(context).getUserDao().getUserNameById(list.get(position).getBooker_id());
             holder.title.setText(title_txt);
+
+            String description = AppDatabaseSingleton.getInstance(context).getUserDao().getUserNameById(list.get(position).getBooker_id()) +
+                    " sent you a request to view your property - " + AppDatabaseSingleton.getInstance(context).getHouseDao().getTitleById(list.get(position).getHouse_id())
+                    +  " on " +  new SimpleDateFormat("yyyy-MM-dd").format(list.get(position).getDate()) +
+                    ". You may contact him/her at " +  AppDatabaseSingleton.getInstance(context).getUserDao().getContactById(list.get(position).getBooker_id());
+        holder.description.setText(description);
     }
 
     @Override
     public int getItemCount() {
-        return district.length;
+        return list.size();
     }
     class ViewHolder extends RecyclerView.ViewHolder {
 

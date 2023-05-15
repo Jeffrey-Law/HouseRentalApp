@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -65,7 +67,12 @@ public class BookingActivity extends AppCompatActivity {
         @Override
         public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
             // display the selected date by using a toast
-            choiceDate = new Date(year + '-' + month + '-' +dayOfMonth);
+            String date_txt = String.valueOf(year) + '-' + String.valueOf(month) + '-' +String.valueOf(dayOfMonth);
+            try {
+                choiceDate = new SimpleDateFormat("yyyy-MM-dd").parse(date_txt);
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
+            }
         }
     };
 
@@ -74,7 +81,7 @@ public class BookingActivity extends AppCompatActivity {
         public void onClick(View view) {
             Booking booking = new Booking(user_id,house_id, houseDao.getOwnerById(house_id),choiceDate);
             bookingDao.insert(booking);
-            Toast.makeText(getApplicationContext(), "Booked successfully" , Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Booking on " + choiceDate.toString() + "successfully" , Toast.LENGTH_SHORT).show();
 
             Log.d("Booking Record", String.valueOf(bookingDao.getNoOfRecords()));
             finish();

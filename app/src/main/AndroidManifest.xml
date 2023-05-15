@@ -2,7 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
     <application
         android:allowBackup="true"
@@ -20,18 +22,42 @@
         <activity
             android:name=".HomeActivity"
             android:exported="true">
+        </activity>
+        <activity
+            android:name=".BookingActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".register"
-            android:exported="false"></activity>
+            android:name=".DetailActivity"
+            android:exported="true">
+        </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
-    </application>
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".SignUpActivity"
+            android:exported="true">
+                    </activity>
+        <activity
+            android:name=".GoogleMapActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".NotificationActivity"
+            android:exported="true">
+        </activity>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBxr55D3bD-JcmOLBq0KzhKvIoMem8zwOQ"/>
+        </application>
 
 </manifest>
