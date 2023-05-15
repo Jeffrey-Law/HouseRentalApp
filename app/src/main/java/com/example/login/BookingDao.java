@@ -6,6 +6,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import java.util.Date;
 import java.util.List;
 
 @Dao
@@ -25,7 +26,9 @@ public interface BookingDao {
     @Query("SELECT * FROM booking_table WHERE booking_id = :id LIMIT 1")
     Booking getBookingById(int id);
 
-
     @Query("SELECT COUNT(*) FROM booking_table")
     int getNoOfRecords();
+
+    @Query("SELECT date FROM booking_table WHERE booking_id = :id LIMIT 1")
+    Date getBookingDateById(int id);
 }

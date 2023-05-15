@@ -5,22 +5,28 @@
     tools:context=".booking">
     <!-- CalendarView with monday as first day and minmal and maximal day -->
 
-    <com.example.login.RangeCalendarView
-        android:id="@+id/CalendarView"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="382dp" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/bookingpbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/CalendarView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="91dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/background_btn"
-        android:text="Book" />
+        <CalendarView
+            android:id="@+id/booking_cv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bookingpbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="-7dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/background_btn"
+            android:text="Book" />
+
+    </LinearLayout>
 
 </RelativeLayout>

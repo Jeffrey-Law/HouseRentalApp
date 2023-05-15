@@ -32,7 +32,7 @@ public class BookingActivity extends AppCompatActivity {
         bookingDao = appDatabase.getBookingDao();
 
         setContentView(R.layout.booking);
-        simpleCalendarView = (CalendarView) findViewById(R.id.CalendarView); // get the reference of CalendarView
+        simpleCalendarView = (CalendarView) findViewById(R.id.booking_cv); // get the reference of CalendarView
         simpleCalendarView.setFocusedMonthDateColor(Color.RED); // set the red color for the dates of  focused month
         simpleCalendarView.setUnfocusedMonthDateColor(Color.BLUE); // set the yellow color for the dates of an unfocused month
         simpleCalendarView.setSelectedWeekBackgroundColor(Color.RED); // red color for the selected week's background

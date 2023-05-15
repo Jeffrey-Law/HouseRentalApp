@@ -37,6 +37,7 @@ public class HomeActivity extends AppCompatActivity {
     private LinearLayout homeBtn, manageBtn, postBtn, notificationBtn, settingBtn;
     private NestedScrollView scrollView;
     private RecyclerView recyclerView_hot, recyclerView_district;
+    private RecyclerView recyclerView_hot, recyclerView_district;
     private int[] adbgColor = new int[5];
 
     private String[] districts = {"Central and Western", "Eastern", "Southern", "Wan Chai", "Sham Shui Po",
