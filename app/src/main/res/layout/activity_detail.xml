@@ -363,12 +363,12 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/textView12"
+                android:id="@+id/UserContact"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="16dp"
-                android:text="Description"
+                android:text="UserContact"
                 android:textColor="#000000"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -385,6 +385,16 @@
                 android:textSize="16sp" />
 
 
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:text="Description"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/booknow_btn"
