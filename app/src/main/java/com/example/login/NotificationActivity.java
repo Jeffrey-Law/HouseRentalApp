@@ -49,6 +49,5 @@ public class NotificationActivity extends AppCompatActivity {
             no_request_found.setVisibility(View.VISIBLE);
         }
         recyclerView.setAdapter(new notificationAdapter(getApplicationContext(),bookingDao.getAllRequestFromBooker(user_id)));
-
     }
 }

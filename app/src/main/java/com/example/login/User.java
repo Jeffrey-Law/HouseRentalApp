@@ -84,7 +84,11 @@ public class User {
     }
 
     public Bitmap getUser_image() {
-        return BitmapFactory.decodeByteArray(user_image, 0, user_image.length);
+        if(user_image == null){
+            return null;
+        }else{
+            return BitmapFactory.decodeByteArray(user_image, 0, user_image.length);
+        }
     }
 }
 

@@ -234,7 +234,7 @@ private View.OnTouchListener toolbar_listener = new View.OnTouchListener() {
     private View.OnClickListener settingBtn_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(HomeActivity.this, BookingActivity.class); // TODO
+            Intent intent = new Intent(HomeActivity.this, SettingActivity.class); // TODO
             intent.putExtra("user_id", user_id);
             startActivity(intent);
         }
