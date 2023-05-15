@@ -375,6 +375,7 @@ private View.OnTouchListener toolbar_listener = new View.OnTouchListener() {
     public void onItemClickDistrict(String district) {
         Intent intent = new Intent(HomeActivity.this, search_result.class);
         intent.putExtra("district", district);
+        intent.putExtra("user_id", user_id);
         startActivity(intent);
     }
 }
