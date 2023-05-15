@@ -86,11 +86,6 @@
                     android:background="#70000000"
                     app:layout_constraintBottom_toBottomOf="@+id/house_image_iv"
                     app:layout_constraintEnd_toEndOf="parent"
-
-                    app:layout_constraintHorizontal_bias="0.0"
-
-                    app:layout_constraintHorizontal_bias="1.0"
-
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <ImageView
@@ -119,16 +114,30 @@
                     android:id="@+id/addressTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="12dp"
                     android:text=" Hongkong"
                     android:textColor="@color/white"
                     android:textSize="17sp"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView8"
                     app:layout_constraintStart_toEndOf="@+id/imageView8"
-                    app:layout_constraintTop_toTopOf="@+id/imageView8" />
+                    app:layout_constraintTop_toTopOf="@+id/imageView8"
+                    app:layout_constraintVertical_bias="1.0" />
+
+                <TextView
+                    android:id="@+id/houseOwner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="200dp"
+                    android:text="houseOwner"
+                    android:textColor="@color/white"
+                    android:textSize="17sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView8"
+                    app:layout_constraintStart_toEndOf="@+id/imageView8"
+                    app:layout_constraintTop_toTopOf="@+id/imageView8"
+                    app:layout_constraintVertical_bias="1.0" />
 
                 <ImageButton
-                    android:id="@+id/addfavbtn"
+                    android:id="@+id/addFavbtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:srcCompat="@drawable/baseline_favorite_24"
