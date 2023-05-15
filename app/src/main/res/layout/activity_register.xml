@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/loginbackground"
+    android:background="#3f9dff"
     tools:context=".register">
 
 
@@ -52,7 +52,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:background="@drawable/blue_rounded_shape"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <EditText
@@ -130,7 +131,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
-            android:background="@drawable/background_btn"
+            android:background="@drawable/blue_rounded_shape"
             android:text="REGISTER" />
 
     </LinearLayout>

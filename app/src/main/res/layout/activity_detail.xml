@@ -416,11 +416,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="32dp"
-                android:background="@drawable/background_btn"
+                android:background="@drawable/blue_rounded_shape"
                 android:text="Book Now"
                 android:textColor="@color/white"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textSize="18sp" />
 
 
         </LinearLayout>

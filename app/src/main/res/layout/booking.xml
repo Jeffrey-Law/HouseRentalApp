@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".booking">
+    tools:context=".booking"
+    android:background="">
     <!-- CalendarView with monday as first day and minmal and maximal day -->
 
     <LinearLayout
@@ -24,7 +25,7 @@
             android:layout_marginTop="-7dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/background_btn"
+            android:background="@drawable/blue_rounded_shape"
             android:text="Book" />
 
     </LinearLayout>
