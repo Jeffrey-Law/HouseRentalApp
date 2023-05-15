@@ -67,7 +67,8 @@ public class BookingActivity extends AppCompatActivity {
         @Override
         public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
             // display the selected date by using a toast
-            String date_txt = String.valueOf(year) + '-' + String.valueOf(month) + '-' +String.valueOf(dayOfMonth);
+            String date_txt = String.valueOf(year) + '-' + String.valueOf(month+1) + '-' +String.valueOf(dayOfMonth);
+            Log.d("Booking Date: ", date_txt);
             try {
                 choiceDate = new SimpleDateFormat("yyyy-MM-dd").parse(date_txt);
             } catch (ParseException e) {
@@ -80,11 +81,13 @@ public class BookingActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             Booking booking = new Booking(user_id,house_id, houseDao.getOwnerById(house_id),choiceDate);
+            Log.d("Insert Booking", String.valueOf(user_id) + String.valueOf(house_id) + houseDao.getOwnerById(house_id) + choiceDate.toString());
             bookingDao.insert(booking);
-            Toast.makeText(getApplicationContext(), "Booking on " + choiceDate.toString() + "successfully" , Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Booking successfully" , Toast.LENGTH_SHORT).show();
 
             Log.d("Booking Record", String.valueOf(bookingDao.getNoOfRecords()));
             finish();
         }
     };
+
 }

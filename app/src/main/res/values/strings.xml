@@ -30,4 +30,5 @@
     <string name="detail_description_tv" />
     <string name="booking_title_tv_str">A Booking Request From Peter (#1)</string>
     <string name="booking_description_tv_str">Peter sent you a request to view your property - \"House 2\" at \"06/06/2023\" . You may contact him/her at \" 12344321\"".</string>
+    <string name="notification_no_request_tv_str">No Booking/Request is found</string>
 </resources>
