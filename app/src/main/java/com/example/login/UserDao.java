@@ -41,4 +41,7 @@ public interface UserDao {
 
     @Query("SELECT contact FROM user_table WHERE user_id = :id LIMIT 1")
     String getContactById(int id);
+
+    @Query("SELECT email FROM user_table WHERE user_id = :id LIMIT 1")
+    String getEmailById(int id);
 }

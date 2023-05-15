@@ -64,7 +64,7 @@ public class DetailActivity extends AppCompatActivity {
 
             title.setText(house.getTitle());
             address.setText(house.getAddress());
-            price.setText("$" + house.getPrice());
+            price.setText("$" + house.getPrice() + "/day");
             bed_room.setText(house.getBedroom_num());
             car_space.setText(house.getCar_space_num());
             description.setText(house.getDescription());

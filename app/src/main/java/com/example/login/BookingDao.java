@@ -37,4 +37,7 @@ public interface BookingDao {
 
     @Query("SELECT * FROM booking_table WHERE (house_owner_id = :id) AND (status = 0)")
     List<Booking> getAllRequestFromBooker(int id);
+
+    @Query("SELECT * FROM booking_table WHERE booker_id = :id")
+    List<Booking> getAllResponseFromOwner(int id);
 }
