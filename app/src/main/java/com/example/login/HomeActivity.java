@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,14 +28,15 @@ import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.example.login.Adapter.districtAdapter;
 import com.example.login.Adapter.hotHouseAdapter;
+import com.example.login.RecyclerViewInterface.HotHouseInterface;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements HotHouseInterface {
     private ImageButton ib_favourite;
     private Button btn_searchwithmap, btn_search;
     private CardView outer_ad_1, outer_ad_2, outer_ad_3, outer_ad_4, outer_ad_5;
-    private ImageView ad_1_iv, ad_2_iv, ad_3_iv, ad_4_iv, ad_5_iv;
+    private ImageView ad_1_iv, ad_2_iv, ad_3_iv, ad_4_iv, ad_5_iv, iv_home, iv_manage, iv_post, iv_notification, iv_setting;
     private EditText et_search_box;
-    private LinearLayout homeBtn, manageBtn, postBtn, notificationBtn, settingBtn;
+    private LinearLayout homeBtn, manageBtn, postBtn, notificationBtn, settingBtn, toolbar;
     private NestedScrollView scrollView;
     private RecyclerView recyclerView_hot, recyclerView_district;
     private int[] adbgColor = new int[5];
@@ -43,7 +45,6 @@ public class HomeActivity extends AppCompatActivity {
             "Kowloon City", "Kwun Tong", "Wong Tai Sin", "Yau Tsim Mong", "Islands", "Kwai Tsing",
             "North", "Sai Kung", "Sha Tin", "Tai Po", "Tsuen Wan", "Tuen Mun", "Yuen Long"};
     private int[] imageId = {R.drawable.centralandwestern, R.drawable.eastern, R.drawable.southern, R.drawable.wanchai, R.drawable.shamshuipo, R.drawable.kowlooncity, R.drawable.kwuntong, R.drawable.wongtaisin,R.drawable.yautsimmong, R.drawable.islands,R.drawable.kwaitsing, R.drawable.north, R.drawable.saikung, R.drawable.shatin, R.drawable.taipo, R.drawable.tsuenwan,R.drawable.tuenmun,R.drawable.yuenlong};
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,13 +73,14 @@ public class HomeActivity extends AppCompatActivity {
         scrollView = findViewById(R.id.scrollView);
         recyclerView_hot = findViewById(R.id.recyclerview_hot);
         recyclerView_district = findViewById(R.id.recyclerView_district);
+        toolbar = findViewById(R.id.toolbar);
+        iv_home = findViewById(R.id.iv_home);
+        iv_manage = findViewById(R.id.iv_manage);
+        iv_post = findViewById(R.id.iv_post);
+        iv_notification = findViewById(R.id.iv_notification);
+        iv_setting = findViewById(R.id.iv_setting);
 
-        AppDatabase instance = AppDatabaseSingleton.getInstance(getApplicationContext());
-        recyclerView_hot.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        recyclerView_hot.setAdapter(new hotHouseAdapter(getApplicationContext(), instance.getHouseDao().getAllHouse()));
-        recyclerView_district.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        recyclerView_district.setAdapter(new districtAdapter(getApplicationContext(), districts, imageId));
-
+        scrollView.setVisibility(View.VISIBLE);
 
 //        Log.d("Size",  String.valueOf(instance.getHouseDao().getAllHouse()));
 
@@ -104,6 +106,7 @@ public class HomeActivity extends AppCompatActivity {
         postBtn.setOnClickListener(postBtn_listener);
         notificationBtn.setOnClickListener(notificationBtn_listener);
         settingBtn.setOnClickListener(settingBtn_listener);
+        toolbar.setOnTouchListener(toolbar_listener);
 
         // Will be laggy if not using glide to load images
         glideImage(R.drawable.ad1_1, ad_1_iv);
@@ -111,7 +114,48 @@ public class HomeActivity extends AppCompatActivity {
         glideImage(R.drawable.ad3_1, ad_3_iv);
         glideImage(R.drawable.ad4_1, ad_4_iv);
         glideImage(R.drawable.ad5_1, ad_5_iv);
+
+        glideImage(R.drawable.home, iv_home);
+        glideImage(R.drawable.user, iv_manage);
+        glideImage(R.drawable.post, iv_post);
+        glideImage(R.drawable.bell, iv_notification);
+        glideImage(R.drawable.settings, iv_setting);
+
+        Log.d("TAG", "REACHED BOTTOM OF ONCREATE()");
     }
+private View.OnTouchListener toolbar_listener = new View.OnTouchListener() {
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        // Handle touch events for the toolbar
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                // Handle toolbar touch down event
+                if (scrollView != null) {
+                    int width = scrollView.getWidth();
+                    int height = scrollView.getHeight();
+                    boolean hasNestedScrollingEnabled = scrollView.isNestedScrollingEnabled();
+
+                    Log.d("SCROLLVIEW", "NestedScrollView properties:");
+                    Log.d("SCROLLVIEW", "Width: " + width);
+                    Log.d("SCROLLVIEW", "Height: " + height);
+                    Log.d("SCROLLVIEW", "Nested scrolling enabled: " + hasNestedScrollingEnabled);
+                    Log.d("SCROLLVIEW", "Visibility: " + scrollView.getVisibility());
+                    Log.d("SCROLLVIEW", "x: " + scrollView.getX());
+                    Log.d("SCROLLVIEW", "y: " + scrollView.getY()); // Goes Below app bar
+                } else {
+                    Log.e("SCROLLVIEW", "NestedScrollView is null");
+                }
+                break;
+            case MotionEvent.ACTION_MOVE:
+                // Handle toolbar touch move event
+                break;
+            case MotionEvent.ACTION_UP:
+                // Handle toolbar touch up event
+                break;
+        }
+        return true; // Return 'true' to consume the touch event
+    }
+};
 
     private View.OnClickListener ib_favourite_listener = new View.OnClickListener() {
         @Override
@@ -248,11 +292,30 @@ public class HomeActivity extends AppCompatActivity {
         outer_ad_4.setCardBackgroundColor(adbgColor[3]);
         outer_ad_5.setCardBackgroundColor(adbgColor[4]);
 
-//        AppDatabase instance = AppDatabaseSingleton.getInstance(getApplicationContext());
-//        recyclerView_hot.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-//        recyclerView_hot.setAdapter(new hotHouseAdapter(getApplicationContext(), instance.getHouseDao().getAllHouse()));
-//        recyclerView_district.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-//        recyclerView_district.setAdapter(new districtAdapter(getApplicationContext(), districts, imageId));
+        AppDatabase instance = AppDatabaseSingleton.getInstance(getApplicationContext());
+        recyclerView_hot.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        recyclerView_hot.setAdapter(new hotHouseAdapter(getApplicationContext(), instance.getHouseDao().sortHouseRating("DESC"), this));
+        recyclerView_district.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        recyclerView_district.setAdapter(new districtAdapter(getApplicationContext(), districts, imageId));
+
+        if (scrollView != null) {
+            int width = scrollView.getWidth();
+            int height = scrollView.getHeight();
+            boolean hasNestedScrollingEnabled = scrollView.isNestedScrollingEnabled();
+
+            Log.d("SCROLLVIEW", "NestedScrollView properties:");
+            Log.d("SCROLLVIEW", "Width: " + width);
+            Log.d("SCROLLVIEW", "Height: " + height);
+            Log.d("SCROLLVIEW", "Nested scrolling enabled: " + hasNestedScrollingEnabled);
+            Log.d("SCROLLVIEW", "Visibility: " + scrollView.getVisibility());
+            Log.d("SCROLLVIEW", "x: " + scrollView.getX());
+            Log.d("SCROLLVIEW", "y: " + scrollView.getY());
+        } else {
+            Log.e("SCROLLVIEW", "NestedScrollView is null");
+        }
+
+
+        Log.d("TAG", "REACHED BOTTOM OF ONRESUME()");
     }
 
     private void glideImage(int image, ImageView imageView) {
@@ -271,6 +334,17 @@ public class HomeActivity extends AppCompatActivity {
                     }
                 })
                 .into(imageView);
+    }
+
+    @Override
+    public void onItemClick(int id) {
+//        AppDatabase instance = AppDatabaseSingleton.getInstance(getApplicationContext());
+//        House selectedHouse = instance.getHouseDao().getHouseById(position);
+
+        Intent intent = new Intent(HomeActivity.this, DetailActivity.class);
+
+        intent.putExtra("house_id", id);
+        startActivity(intent);
     }
 }
 

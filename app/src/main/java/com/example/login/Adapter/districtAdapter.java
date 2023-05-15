@@ -1,6 +1,7 @@
 package com.example.login.Adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +35,7 @@ public class districtAdapter extends RecyclerView.Adapter<districtAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull districtAdapter.ViewHolder holder, int position) {
+        Log.d("Position:district", String.valueOf(position));
         holder.ib_district.setImageResource(imageId[position]);
         holder.ib_district.setMaxHeight(800);
         holder.ib_district.setMaxWidth(400);

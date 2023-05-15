@@ -344,6 +344,7 @@
             app:layout_scrollFlags="scroll" />
 
         <LinearLayout
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#FFFFFF"
@@ -378,7 +379,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_weight="0"
                     android:background="?attr/selectableItemBackgroundBorderless"
-                    android:contentDescription="Go to Notification Page"
+                    android:contentDescription="Go to Favourite Page"
                     android:scaleType="fitXY"
                     app:srcCompat="@drawable/favourite" />
 
@@ -452,7 +453,10 @@
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+        android:layout_below="@+id/toolbar"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        >
+<!--        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"-->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -513,106 +517,17 @@
 
             </LinearLayout>
 
-            <!--            <LinearLayout-->
-            <!--                android:id="@+id/location_section_2"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:orientation="vertical"-->
-            <!--                android:padding="16dp">-->
-
-            <!--                <TextView-->
-            <!--                    android:id="@+id/tv_location_title_2"-->
-            <!--                    android:layout_width="match_parent"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:padding="16dp"-->
-            <!--                    android:text="@string/home_tv_district_title_str"-->
-            <!--                    android:textSize="18sp"-->
-            <!--                    android:textStyle="bold" />-->
-
-            <!--                <HorizontalScrollView-->
-            <!--                    android:id="@+id/hsv_location_buttons_2"-->
-            <!--                    android:layout_width="match_parent"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:padding="8dp">-->
-
-            <!--                    <LinearLayout-->
-            <!--                        android:layout_width="wrap_content"-->
-            <!--                        android:layout_height="match_parent"-->
-            <!--                        android:orientation="horizontal">-->
-
-            <!--                        <ImageButton-->
-            <!--                            android:id="@+id/ib_location_test2"-->
-            <!--                            android:layout_width="120dp"-->
-            <!--                            android:layout_height="120dp"-->
-            <!--                            android:layout_marginEnd="8dp"-->
-            <!--                            android:background="@drawable/circle_button"-->
-            <!--                            android:contentDescription="Location-HKUST"-->
-            <!--                            android:scaleType="fitXY"-->
-            <!--                            android:src="@drawable/hkust" />-->
-
-            <!--                    </LinearLayout>-->
-
-            <!--                </HorizontalScrollView>-->
-
-            <!--            </LinearLayout>-->
-
-            <!--            <LinearLayout-->
-            <!--                android:id="@+id/location_section_3"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:orientation="vertical"-->
-            <!--                android:padding="16dp">-->
-
-            <!--                <TextView-->
-            <!--                    android:id="@+id/tv_location_title_3"-->
-            <!--                    android:layout_width="match_parent"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:padding="16dp"-->
-            <!--                    android:text="@string/home_tv_district_title_str"-->
-            <!--                    android:textSize="18sp"-->
-            <!--                    android:textStyle="bold" />-->
-
-            <!--                <HorizontalScrollView-->
-            <!--                    android:id="@+id/hsv_location_buttons_3"-->
-            <!--                    android:layout_width="match_parent"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:padding="8dp">-->
-
-            <!--                    <LinearLayout-->
-            <!--                        android:layout_width="wrap_content"-->
-            <!--                        android:layout_height="match_parent"-->
-            <!--                        android:orientation="horizontal">-->
-
-            <!--                        <ImageButton-->
-            <!--                            android:id="@+id/ib_location_test3"-->
-            <!--                            android:layout_width="120dp"-->
-            <!--                            android:layout_height="120dp"-->
-            <!--                            android:layout_marginEnd="8dp"-->
-            <!--                            android:background="@drawable/circle_button"-->
-            <!--                            android:contentDescription="Location-HKUST"-->
-            <!--                            android:scaleType="fitXY"-->
-            <!--                            android:src="@drawable/hkust" />-->
-
-            <!--                    </LinearLayout>-->
-
-            <!--                </HorizontalScrollView>-->
-
-            <!--            </LinearLayout>-->
-
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
 
 
-    <com.google.android.material.appbar.AppBarLayout
+    <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
+        android:gravity="bottom"
         android:layout_height="60dp"
-        android:layout_gravity="bottom"
-        android:paddingStart="0dp">
-        <!--        app:fabCradleMargin="8dp"-->
-        <!--        app:fabCradleRoundedCornerRadius="90dp"-->
-        <!--        app:fabCradleVerticalOffset="6dp"-->
+        android:layout_gravity="bottom">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -629,11 +544,11 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/iv_home"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_gravity="center"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/home" />
+                    android:layout_weight="1"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -655,11 +570,11 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/iv_manage"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_gravity="center"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/user" />
+                    android:layout_weight="1"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -681,11 +596,11 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/iv_post"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/post" />
+                    android:layout_weight="1"/>
             </LinearLayout>
 
             <LinearLayout
@@ -696,11 +611,11 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/iv_notification"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_gravity="center"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/bell" />
+                    android:layout_weight="1"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -723,11 +638,11 @@
                 android:visibility="visible">
 
                 <ImageView
+                    android:id="@+id/iv_setting"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_gravity="center"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/settings" />
+                    android:layout_weight="1"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -742,13 +657,6 @@
             </LinearLayout>
         </LinearLayout>
 
-    </com.google.android.material.appbar.AppBarLayout>
+    </com.google.android.material.bottomappbar.BottomAppBar>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-    <!--                <HorizontalScrollView-->
-    <!--                    android:id="@+id/hsv_hot_houses"-->
-    <!--                    android:layout_width="match_parent"-->
-    <!--                    android:layout_height="wrap_content"-->
-    <!--                    android:padding="8dp">-->
-    <!--                </HorizontalScrollView>-->
