@@ -12,29 +12,29 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.login.House;
 import com.example.login.R;
-import com.example.login.RecyclerViewInterface.SearchResultInterface;
+import com.example.login.RecyclerViewInterface.ViewInterface;
 
 import java.util.List;
 
-public class resultAdapter extends RecyclerView.Adapter<resultAdapter.ViewHolder> {
-    private final SearchResultInterface searchResultInterface;
+public class viewAdapter extends RecyclerView.Adapter<viewAdapter.ViewHolder> {
+    private final ViewInterface viewInterface;
     Context context;
     List<House> list;
 
-    public resultAdapter(Context context, List<House> list, SearchResultInterface searchResultAdapter) {
-        this.searchResultInterface = searchResultAdapter;
+    public viewAdapter(Context context, List<House> list, ViewInterface viewInterface) {
+        this.viewInterface = viewInterface;
         this.context = context;
         this.list = list;
     }
 
     @NonNull
     @Override
-    public resultAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.house_card2, parent, false), searchResultInterface);
+    public viewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.house_card2, parent, false), viewInterface);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull resultAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull viewAdapter.ViewHolder holder, int position) {
         holder.iv_house_image.setImageBitmap(list.get(position).getHouse_image());
         holder.tv_house_name.setText(list.get(position).getTitle()); // TODO: Change to getHouse name
         holder.tv_house_price.setText("$" + list.get(position).getPrice() + "/day");
@@ -96,7 +96,7 @@ public class resultAdapter extends RecyclerView.Adapter<resultAdapter.ViewHolder
         ImageView iv_house_image, star1, star2, star3, star4, star5;
         TextView tv_house_name, tv_house_price, tv_house_district;
 
-        public ViewHolder(@NonNull View itemView, SearchResultInterface searchResultInterface) {
+        public ViewHolder(@NonNull View itemView, ViewInterface viewInterface) {
             super(itemView);
 
             iv_house_image = itemView.findViewById(R.id.iv_house_image);
@@ -112,10 +112,10 @@ public class resultAdapter extends RecyclerView.Adapter<resultAdapter.ViewHolder
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (searchResultInterface != null) {
+                    if (viewInterface != null) {
                         if (getAdapterPosition() != RecyclerView.NO_POSITION) {
                             int id = list.get(getAdapterPosition()).getHouse_id();
-                            searchResultInterface.onItemClickSearchResult(id);
+                            viewInterface.onItemClickFavourite(id);
                         }
                     }
                 }

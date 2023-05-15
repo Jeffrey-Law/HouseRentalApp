@@ -19,7 +19,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -36,9 +35,9 @@ public class HomeActivity extends AppCompatActivity implements HotHouseInterface
     private ImageButton ib_favourite;
     private Button btn_searchwithmap, btn_search;
     private CardView outer_ad_1, outer_ad_2, outer_ad_3, outer_ad_4, outer_ad_5;
-    private ImageView ad_1_iv, ad_2_iv, ad_3_iv, ad_4_iv, ad_5_iv, iv_home, iv_manage, iv_post, iv_notification, iv_setting;
+    private ImageView ad_1_iv, ad_2_iv, ad_3_iv, ad_4_iv, ad_5_iv, iv_home, iv_view, iv_post, iv_notification, iv_setting;
     private EditText et_search_box;
-    private LinearLayout homeBtn, manageBtn, postBtn, notificationBtn, settingBtn, toolbar;
+    private LinearLayout homeBtn, viewBtn, postBtn, notificationBtn, settingBtn, toolbar;
     private NestedScrollView scrollView;
     private RecyclerView recyclerView_hot, recyclerView_district;
     private int[] adbgColor = new int[5];
@@ -56,7 +55,7 @@ public class HomeActivity extends AppCompatActivity implements HotHouseInterface
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        ib_favourite = findViewById(R.id.ib_favourite);
+//        ib_favourite = findViewById(R.id.ib_favourite);
         btn_searchwithmap = findViewById(R.id.btn_searchwithmap);
         btn_search = findViewById(R.id.btn_search);
         outer_ad_1 = findViewById(R.id.outer_ad_1);
@@ -71,7 +70,7 @@ public class HomeActivity extends AppCompatActivity implements HotHouseInterface
         ad_5_iv = findViewById(R.id.ad_5_iv);
         et_search_box = findViewById(R.id.et_search_box);
         homeBtn = findViewById(R.id.homeBtn);
-        manageBtn = findViewById(R.id.manageBtn);
+        viewBtn = findViewById(R.id.viewBtn);
         postBtn = findViewById(R.id.postBtn);
         notificationBtn = findViewById(R.id.notificationBtn);
         settingBtn = findViewById(R.id.settingBtn);
@@ -80,7 +79,7 @@ public class HomeActivity extends AppCompatActivity implements HotHouseInterface
         recyclerView_district = findViewById(R.id.recyclerView_district);
         toolbar = findViewById(R.id.toolbar);
         iv_home = findViewById(R.id.iv_home);
-        iv_manage = findViewById(R.id.iv_manage);
+        iv_view = findViewById(R.id.iv_view);
         iv_post = findViewById(R.id.iv_post);
         iv_notification = findViewById(R.id.iv_notification);
         iv_setting = findViewById(R.id.iv_setting);
@@ -100,7 +99,7 @@ public class HomeActivity extends AppCompatActivity implements HotHouseInterface
         adbgColor[3] = outer_ad_4.getCardBackgroundColor().getDefaultColor();
         adbgColor[4] = outer_ad_5.getCardBackgroundColor().getDefaultColor();
 
-        ib_favourite.setOnClickListener(ib_favourite_listener);
+//        ib_favourite.setOnClickListener(ib_favourite_listener);
         btn_searchwithmap.setOnClickListener(btn_searchwithmap_listener);
         btn_search.setOnClickListener(btn_search_listener);
         ad_1_iv.setOnClickListener(ad_1_iv_listener);
@@ -109,7 +108,7 @@ public class HomeActivity extends AppCompatActivity implements HotHouseInterface
         ad_4_iv.setOnClickListener(ad_4_iv_listener);
         ad_5_iv.setOnClickListener(ad_5_iv_listener);
         homeBtn.setOnClickListener(homeBtn_listener);
-        manageBtn.setOnClickListener(manageBtn_listener);
+        viewBtn.setOnClickListener(viewBtn_listener);
         postBtn.setOnClickListener(postBtn_listener);
         notificationBtn.setOnClickListener(notificationBtn_listener);
         settingBtn.setOnClickListener(settingBtn_listener);
@@ -123,7 +122,7 @@ public class HomeActivity extends AppCompatActivity implements HotHouseInterface
         glideImage(R.drawable.ad5_1, ad_5_iv);
 
         glideImage(R.drawable.home, iv_home);
-        glideImage(R.drawable.user, iv_manage);
+        glideImage(R.drawable.database, iv_view);
         glideImage(R.drawable.post, iv_post);
         glideImage(R.drawable.bell, iv_notification);
         glideImage(R.drawable.settings, iv_setting);
@@ -172,14 +171,14 @@ private View.OnTouchListener toolbar_listener = new View.OnTouchListener() {
     }
 };
 
-    private View.OnClickListener ib_favourite_listener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Intent intent = new Intent(HomeActivity.this, favourite.class);
-            intent.putExtra("user_id", user_id);
-            startActivity(intent);
-        }
-    };
+//    private View.OnClickListener ib_favourite_listener = new View.OnClickListener() {
+//        @Override
+//        public void onClick(View v) {
+//            Intent intent = new Intent(HomeActivity.this, favourite.class);
+//            intent.putExtra("user_id", user_id);
+//            startActivity(intent);
+//        }
+//    };
 
     private View.OnClickListener btn_searchwithmap_listener = new View.OnClickListener() {
         @Override
@@ -213,10 +212,10 @@ private View.OnTouchListener toolbar_listener = new View.OnTouchListener() {
         }
     };
 
-    private View.OnClickListener manageBtn_listener = new View.OnClickListener() {
+    private View.OnClickListener viewBtn_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(HomeActivity.this, PostingActivity.class); // TODO
+            Intent intent = new Intent(HomeActivity.this, view.class); // TODO
             intent.putExtra("user_id", user_id);
             startActivity(intent);
         }
